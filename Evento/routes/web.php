@@ -15,6 +15,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/event', function () {
+    return view('admin.event');
+});
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/', [LoginController::class, 'loginPost'])->name('login.post');
