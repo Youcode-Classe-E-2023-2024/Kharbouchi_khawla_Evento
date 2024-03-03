@@ -303,10 +303,12 @@ body {
 }
 .details table thead td {
   font-weight: 600;
+  height: 20px; ;
 }
 .details .recentOrders table tr {
   color: var(--black1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 20px;
 }
 .details .recentOrders table tr:last-child {
   border-bottom: none;

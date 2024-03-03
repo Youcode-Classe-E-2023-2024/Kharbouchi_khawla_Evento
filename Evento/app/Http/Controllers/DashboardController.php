@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.Dashboard'); // Assurez-vous que le nom de la vue correspond à votre fichier de vue dans resources/views
+        return view('admin.Dashboard'); 
     }
 }
