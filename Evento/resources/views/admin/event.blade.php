@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
+        .image-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 20px; 
+  }
+
+  .image-container img {
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease-in-out; 
+    max-width: 100%; 
+    height: 40%;
+  }
+
+  .image-container img:hover {
+    transform: scale(1.05); 
+  }
         .containe {
             display: flex;
             justify-content: space-evenly;
@@ -161,18 +179,29 @@
                         border: none; 
                         border-radius: 5px;
                         cursor: pointer; 
-                        transition: background-color 0.3s;">More</button>
+                        transition: background-color 0.3s;">details</button>
 
                     </div>
 <!-- La Modal -->
-<dialog id="demo-modal" style="border: none; border-radius: 5px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:50%; width:50%;">
+<dialog id="demo-modal" style="border:2px solid #2a2185 ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:50%; width:70%; align-items: center; justify-content: center;">
+    <div  style="display: flex;justify-content: center; align-items: center;margin-top:20px;">
     <h2>khawla</h2>
-    <div>
+</div>
+    <div class="image-container" style="text-align: center;">
         <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="">
     </div>
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    <h3>les places :</h3> <h4>22</h4>
+</div>
+<p style="text-align: justify;margin-top:10px; margin-bottom:10px; margin-left:10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur fuga et qui reprehenderit, asperiores corrupti nisi tempore aspernatur laborum voluptatem mollitia doloribus dolore minus iusto odio deserunt, deleniti, distinctio commodi.</p>
 
     <button onclick="document.getElementById('demo-modal').close();"
-            style="background-color: #2a2185; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">
+    style="margin-top:10px; margin-bottom:15px;margin-left:20px; background-color: #2a2185; color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s;">
       Fermer
     </button>
   </dialog>
