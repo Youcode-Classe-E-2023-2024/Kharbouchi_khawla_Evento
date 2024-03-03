@@ -90,7 +90,7 @@
                         </a>
                     </div>
                 </form>
-                <form action="{{ route('login') }}" method="POST" class="sign-up-form">
+                <form action="{{ route('register') }}" method="POST" class="sign-up-form">
                     @csrf
                     @if (session('success'))
                         <div class="alert alert-success">
