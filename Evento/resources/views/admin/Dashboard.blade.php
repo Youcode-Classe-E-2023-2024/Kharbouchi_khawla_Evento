@@ -120,11 +120,11 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Categorie">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Settings</span>
+                        <span class="title">Categorie</span>
                     </a>
                 </li>
 
