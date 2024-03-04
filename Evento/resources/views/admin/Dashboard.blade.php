@@ -86,7 +86,7 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <img src="{{ asset('img/m.png') }}" style="height: 30px; width:30px" alt="Mochtara">
+                            <img src="#" style="height: 30px; width:30px" alt="">
                         </span>
                         <span class="title">Evento</span>
                     </a>
