@@ -78,8 +78,8 @@
 </head>
 
 <body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
+     <!-- =============== Navigation ================ -->
+     <div class="container">
         <div class="navigation">
             <ul>
                 <li>
@@ -92,16 +92,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="/dashboard">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -110,7 +101,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/event">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -118,17 +109,14 @@
                     </a>
                 </li>
 
-
                 <li>
-                    <a href="#">
+                    <a href="/Categorie">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Settings</span>
+                        <span class="title">Categorie</span>
                     </a>
                 </li>
-
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -139,6 +127,8 @@
                 </li>
             </ul>
         </div>
+
+
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
