@@ -104,7 +104,7 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                            <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
                         <span class="title">Events</span>
                     </a>
@@ -117,16 +117,6 @@
                         <span class="title">Settings</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
