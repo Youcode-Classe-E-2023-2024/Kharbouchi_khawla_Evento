@@ -28,3 +28,8 @@ Route::post('/', [LoginController::class, 'loginPost'])->name('login.post');
 
 // Organisateur //
 Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
+
+// Home //
+Route::get('/home', function () {
+    return view('home');
+});
