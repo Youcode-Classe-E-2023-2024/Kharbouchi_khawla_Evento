@@ -36,3 +36,7 @@ Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
 Route::get('/home', function () {
     return view('home');
 });
+// Detail //
+Route::get('/detail', function () {
+    return view('details');
+});
