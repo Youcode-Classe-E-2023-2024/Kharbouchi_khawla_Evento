@@ -3,7 +3,7 @@
 use App\Http\Controllers\organisDash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;
+
 
 
 /*
@@ -24,9 +24,13 @@ Route::get('/event', function () {
 Route::get('/Categorie', function () {
     return view('admin./Categorie');
 });
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/', [LoginController::class, 'loginPost'])->name('login.post');
+// Authentification //
+Route::get('/', function () {
+    return view('Auth.login');
+});
+Route::get('/register', function () {
+    return view('Auth.register');
+});
 // Forgot password //
 
 // Organisateur //
