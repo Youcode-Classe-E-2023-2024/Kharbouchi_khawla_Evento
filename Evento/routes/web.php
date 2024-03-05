@@ -17,7 +17,10 @@ use App\Http\Controllers\ClientsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('admin.Dashboard');
+});
 
 Route::get('/event', function () {
     return view('admin.event');
