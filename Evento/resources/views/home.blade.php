@@ -37,7 +37,7 @@
             <div class="flex justify-end items-center relative">
                 <div class="flex mr-4 items-center">
                     <div class="block relative">
-                        <button type="button" class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative ">
+                        <button type="button" class="inline-block py-2 px-3 hover:bg-white rounded-full relative ">
                             <div class="flex items-center h-5">
                                 <div class="_xpkakx">
                                     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
@@ -186,7 +186,7 @@
                     </p>
                 </div>
                 <div class="px-1 py-4">
-                    <a href="#" class="text-blue-500 hover:underline">Read More</a>
+                    <a href="#" class="custom-text-color hover:underline" style=" color: rgb(211, 68, 82); text-decoration: underline;">Read More</a>
                 </div>
             </div>
             <div class="bg-white rounded-lg border p-4">
@@ -230,7 +230,7 @@
                 <a href="#"
                     class="inline-flex items-center justify-center rounded border border-gray-100  text-white rtl:rotate-180" style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Prev Page</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                             clip-rule="evenodd" />
@@ -246,7 +246,7 @@
                 <a href="#"
                     class="inline-flex items-center justify-center rounded border border-gray-100 text-white" style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Next Page</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                             clip-rule="evenodd" />
