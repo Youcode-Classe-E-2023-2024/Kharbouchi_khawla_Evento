@@ -228,15 +228,20 @@
                                 </select>
                             </td>
                             <td class="p-3 px-5 flex justify-end">
-                                <button type="button"
-                                    class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button>
-                                    <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                    <button
-                                    type="submit"
-                                    class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
-                                </form>
+                                <div class="flex">
+                                    <div>
+                                        <button type="submit"
+                                                class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button>
+                                    </div>
+                                    <div>
+                                        <form action="{{ route('clients.destroy', $client->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                    class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
