@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Client; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class Client extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -27,7 +28,20 @@ class Client extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:clients',
+            'password' => 'required|string|min:6',
+        ]);
+    
+        Client::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'role' => 'client', 
+        ]);
+    
+        return redirect()->route('Auth.login');
     }
 
     /**

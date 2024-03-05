@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\organisDash;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClientsController;
+
 
 
 
@@ -28,9 +29,11 @@ Route::get('/Categorie', function () {
 Route::get('/', function () {
     return view('Auth.login');
 });
+
 Route::get('/register', function () {
-    return view('Auth.register');
+    return view('Auth.register'); 
 });
+Route::post('/register', [ClientsController::class, 'store'])->name('client.store');
 // Forgot password //
 
 // Organisateur //
