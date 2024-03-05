@@ -11,7 +11,7 @@
 
 <body>
 
-    <nav class=" bg-white w-full flex relative justify-between items-center mx-auto px-8 h-20">
+    <nav class=" w-full flex relative justify-between items-center mx-auto px-8 h-20" style="background-color: rgb(211, 68, 82);">
         <!-- logo -->
         <div class="inline-flex">
             <a class="_o6689fn" href="/">
@@ -98,62 +98,62 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-wrap gap-1 md:gap-2 justify-center items-center ">
+    <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Copywriting
+                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Copywriting
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Image
+                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Image
                 Generation
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Content
+                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Content
                 Creation
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Video
+                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Video
                 Generation
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Audio
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Audio
                 Generation
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Design
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Design
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Photo
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0"style="background-color: rgb(211, 68, 82);">Photo
                 Editing
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Writing
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Writing
                 Assistant
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Project
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Project
                 Management
             </span>
         </a>
         <a href="#">
             <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0">Video
+                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Video
                 Editing
             </span>
         </a>
@@ -163,7 +163,7 @@
             <!-- Replace this with your grid items -->
             <div class="bg-white rounded-lg border p-4">
                 <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover">
+                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
                 <div class="px-1 py-4">
                     <div class="font-bold text-xl mb-2">Blog Title</div>
                     <p class="text-gray-700 text-base">
@@ -177,7 +177,7 @@
             </div>
             <div class="bg-white rounded-lg border p-4">
                 <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover">
+                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
                 <div class="px-1 py-4">
                     <div class="font-bold text-xl mb-2">Blog Title</div>
                     <p class="text-gray-700 text-base">
@@ -191,7 +191,7 @@
             </div>
             <div class="bg-white rounded-lg border p-4">
                 <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover">
+                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
                 <div class="px-1 py-4">
                     <div class="font-bold text-xl mb-2">Blog Title</div>
                     <p class="text-gray-700 text-base">
@@ -205,7 +205,7 @@
             </div>
             <div class="bg-white rounded-lg border p-4">
                 <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover">
+                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
                 <div class="px-1 py-4">
                     <div class="font-bold text-xl mb-2">Blog Title</div>
                     <p class="text-gray-700 text-base">
@@ -228,7 +228,7 @@
         <div class="flex justify-center mt-6">
             <div class="inline-flex items-center gap-1">
                 <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180">
+                    class="inline-flex items-center justify-center rounded border border-gray-100  text-white rtl:rotate-180" style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Prev Page</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -239,11 +239,12 @@
                 <div>
                     <label for="PaginationPage" class="sr-only">Page</label>
                     <input type="number" id="PaginationPage"
-                        class="h-8 w-12 rounded border border-gray-100 bg-white p-0 text-center text-xs font-medium text-gray-900 [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                        class="h-8 w-12 rounded border  bg-white p-0 text-center text-xs font-medium text-gray-900 [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                        style="border: 2px solid rgb(211, 68, 82);"
                         min="1" value="2" />
                 </div>
                 <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100 bg-white text-gray-900">
+                    class="inline-flex items-center justify-center rounded border border-gray-100 text-white" style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Next Page</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -255,16 +256,16 @@
         </div>
     </div>
     </div>
-    <footer class="bg-gray-800 text-white py-4 px-3 mt-16">
+    <footer class=" text-white py-4 px-3 mt-16" style="background-color: rgb(211, 68, 82);">
         <div class="container mx-auto flex flex-wrap items-center justify-between">
             <div class="w-full md:w-1/2 md:text-center md:mb-0 mb-8">
-                <p class="text-xs text-gray-400 md:text-sm">Copyright 2020 &copy; All Rights Reserved</p>
+                <p class="text-xs text-white md:text-sm">Copyright 2020 &copy; All Rights Reserved</p>
             </div>
             <div class="w-full md:w-1/2 md:text-center md:mb-0 mb-8">
                 <ul class="list-reset flex justify-center flex-wrap text-xs md:text-sm gap-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                    <li class="mx-4"><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Terms of Use</a></li>
+                    <li><a href="#" class="text-white hover:text-white">Contact</a></li>
+                    <li class="mx-4"><a href="#" class="text-white hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="text-white hover:text-white">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
