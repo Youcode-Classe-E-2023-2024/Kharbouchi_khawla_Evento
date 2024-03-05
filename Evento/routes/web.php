@@ -3,6 +3,7 @@
 use App\Http\Controllers\organisDash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -18,10 +19,7 @@ use App\Http\Controllers\ClientsController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('admin.Dashboard');
-});
-
+Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
 Route::get('/event', function () {
     return view('admin.event');
 });

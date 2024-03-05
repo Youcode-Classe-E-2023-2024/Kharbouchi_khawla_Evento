@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="people-outline"></ion-icon>
                     </div>
                 </div>
 
@@ -209,17 +209,19 @@
                             <th class="text-left p-3 px-5">Role</th>
                             <th></th>
                         </tr>
+                        @foreach ($clients as $client) 
                         <tr class="border-b hover:bg-orange-100 bg-gray-100">
                             <td class="p-3 px-5">
-                                <p>khawla</p>
+                                <p>{{ $client->name }}</p>
                             </td>
                             <td class="p-3 px-5">
-                                <p>khawla@gmail.com</p>
+                                <p>{{ $client->email }}</p>
                             </td>
                             <td class="p-3 px-5">
-                                <select value="user.role" class="bg-transparent">
-                                    <option value="user">user</option>
-                                    <option value="admin">admin</option>
+                                <select class="bg-transparent">
+                                    @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}" @if($client->role == $role->name) selected @endif>{{ $role->name }}</option>
+                                @endforeach
                                 </select>
                             </td>
                             <td class="p-3 px-5 flex justify-end"><button type="button"
@@ -228,6 +230,7 @@
                                     class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
                             </td>
                         </tr>
+                        @endforeach
                 </table>
             </div>
 
