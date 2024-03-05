@@ -72,9 +72,12 @@ class ClientsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete(); // Ceci effectuera un soft delete
+    
+        return redirect()->back()->with('success', 'Client successfully deleted.');
     }
     public function login(Request $request)
 {

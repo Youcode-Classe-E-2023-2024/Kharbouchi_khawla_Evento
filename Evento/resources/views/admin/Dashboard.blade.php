@@ -220,14 +220,23 @@
                             <td class="p-3 px-5">
                                 <select class="bg-transparent">
                                     @foreach ($roles as $role)
-                                    <option value="{{ $role->id }}" @if($client->role == $role->name) selected @endif>{{ $role->name }}</option>
+                                   
+                                    <option value="{{ $role->id }}" @if($client->role_id == $role->id) selected @endif>
+                                        {{ $role->name }}
+                                    </option>
                                 @endforeach
                                 </select>
                             </td>
-                            <td class="p-3 px-5 flex justify-end"><button type="button"
-                                    class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button
-                                    type="button"
+                            <td class="p-3 px-5 flex justify-end">
+                                <button type="button"
+                                    class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button>
+                                    <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                    <button
+                                    type="submit"
                                     class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

@@ -26,6 +26,8 @@ Route::get('/event', function () {
 Route::get('/Categorie', function () {
     return view('admin./Categorie');
 });
+Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
 // Authentification //
 Route::get('/login', function () {
     return view('Auth.login');
