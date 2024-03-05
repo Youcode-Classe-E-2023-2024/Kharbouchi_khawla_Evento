@@ -33,18 +33,35 @@
         <div class="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl">
             <div class="md:w-1/2 px-5">
                 <h2 class="text-2xl font-bold text-[#002D74]">Login</h2>
+                @if(session('success'))
+    <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if($errors->any())
+    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
                 <p class="text-sm mt-4 text-[#002D74]">If you have an account, please login</p>
-                <form class="mt-6" action="#" method="POST">
+                <form class="mt-6" action="{{ route('login.submit') }}" method="POST">
+                    @csrf
                     <div>
                         <label class="block text-gray-700">Email Address</label>
-                        <input type="email" name="" id="" placeholder="Enter Email Address"
+                        <input type="email" name="email" id="" placeholder="Enter Email Address"
                             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                             autofocus autocomplete required>
                     </div>
 
                     <div class="mt-4">
                         <label class="block text-gray-700">Password</label>
-                        <input type="password" name="" id="" placeholder="Enter Password" minlength="6"
+                        <input type="password" name="password" id="" placeholder="Enter Password" minlength="6"
                             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                     focus:bg-white focus:outline-none"
                             required>

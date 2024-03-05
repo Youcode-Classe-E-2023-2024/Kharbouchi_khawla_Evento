@@ -37,10 +37,22 @@
             </div>
             <div class="md:w-1/2 px-5">
                 <h2 class="text-2xl font-bold text-[#002D74]">Register</h2>
-                @if ($errors->has('name'))
-    <span class="text-red-500">{{ $errors->first('name') }}</span>
-@endif
 
+                @if(session('success'))
+                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @if($errors->any())
+                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
                 <form class="mt-6" action="{{ route('client.store') }}" method="POST">
                     @csrf

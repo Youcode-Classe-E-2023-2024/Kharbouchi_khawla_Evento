@@ -26,9 +26,10 @@ Route::get('/Categorie', function () {
     return view('admin./Categorie');
 });
 // Authentification //
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('Auth.login');
-});
+})->name('login');
+Route::post('/login', [ClientsController::class, 'login'])->name('login.submit');
 
 Route::get('/register', function () {
     return view('Auth.register'); 

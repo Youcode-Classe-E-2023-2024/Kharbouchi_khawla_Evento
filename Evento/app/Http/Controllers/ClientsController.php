@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Client; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
@@ -41,7 +42,7 @@ class ClientsController extends Controller
             'role' => 'client', 
         ]);
     
-        return redirect()->route('Auth.login');
+        return redirect()->route('client.store')->with('success', 'Account successfully created!');
     }
 
     /**
@@ -75,4 +76,20 @@ class ClientsController extends Controller
     {
         //
     }
+    public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
+        return redirect()->intended('/home');
+    }
+    return redirect()->route('login')->with('success', 'Account successfully created!');
+
+
+}
 }
