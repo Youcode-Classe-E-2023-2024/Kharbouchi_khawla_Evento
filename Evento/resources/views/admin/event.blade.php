@@ -198,12 +198,13 @@
             </div>
             <!-- La Modal -->
             <dialog id="demo-modal"
-        style="border:2px solid #2a2185 ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:50%; width:50%; align-items: center; justify-content: center;">
-        <button onclick="document.getElementById('demo-modal').close();">x</button>
+        style="border:2px solid #2a2185 ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:auto; width:auto; align-items: center; justify-content: center;">
+        
     <div class="contenedor" style="display:flex; flex-grow:1; padding: 20px; position: relative;">
+        <button onclick="document.getElementById('demo-modal').close();">x</button>
         <div class="img">
             <img src="#_" />
-        </div>
+        </div>   
         <div class="contenido">
             <h1>Lorem Ipsum</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate turpis ac ex lacinia eleifend...</p>

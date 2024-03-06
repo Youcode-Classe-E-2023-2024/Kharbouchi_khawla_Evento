@@ -100,21 +100,12 @@
                         <span class="title">Home</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
                         <span class="title">Events</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
                     </a>
                 </li>
                 <li>
