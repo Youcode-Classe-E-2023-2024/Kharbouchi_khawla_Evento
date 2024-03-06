@@ -129,16 +129,12 @@
                 </li>
             </ul>
         </div>
-
-
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
@@ -150,7 +146,6 @@
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </div>
-
             <!-- ================= New Categories ================ -->
 
             <div class="px-3 py-4 flex justify-center">
@@ -169,7 +164,7 @@
                     </div>
                 <div style="display: flex; justify-content: center;">
                     <table class="text-md bg-white shadow-md rounded mb-4 "
-                        style="width : 70%;" id="table">
+                        style="width : 70%;">
                         <tbody>
                             <tr class="border-b">
                                 <th class="text-left p-3 px-5">Name</th>

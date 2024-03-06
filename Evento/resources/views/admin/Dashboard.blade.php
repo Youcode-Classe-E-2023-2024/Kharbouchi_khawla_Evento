@@ -9,16 +9,15 @@
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-
         table {
-            border-collapse: collapse;
-            width: 100%;
+            border: 2px solid #2a2185;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             overflow: hidden;
         }
 
         th {
+            border-bottom: 2px solid #2a2185;
             background-color: #f8f9fa;
             text-align: left;
             padding: 12px;
@@ -152,8 +151,10 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        @foreach ($clients as $client)
+                        <div class="numbers">{{ $client->id }}</div>
+                        @endforeach
+                        <div class="cardName">Clients</div>
                     </div>
 
                     <div class="iconBx">
@@ -164,33 +165,35 @@
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Organisateur</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="people-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        @if ($categories->first())
+                        <div class="numbers">{{ $categories->first()->id }}</div>
+                    @endif
+                        <div class="cardName">Categories</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <ion-icon name="settings-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="cardName">Events</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <ion-icon name="chatbubble-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -201,63 +204,65 @@
                 <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px;margin-top:40px;">
                     <h2>Clients</h2>
                 </div>
-                <table class="w-full text-md bg-white shadow-md rounded mb-4">
-                    <tbody>
-                        <tr class="border-b">
-                            <th class="text-left p-3 px-5">Name</th>
-                            <th class="text-left p-3 px-5">Email</th>
-                            <th class="text-left p-3 px-5">Role</th>
-                            <th></th>
-                        </tr>
-                        @foreach ($clients as $client) 
-                        <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                            <td class="p-3 px-5">
-                                <p>{{ $client->name }}</p>
-                            </td>
-                            <td class="p-3 px-5">
-                                <p>{{ $client->email }}</p>
-                            </td>
-                            <td class="p-3 px-5">
-                                <select class="bg-transparent">
-                                    @foreach ($roles as $role)
-                                   
-                                    <option value="{{ $role->id }}" @if($client->role_id == $role->id) selected @endif>
-                                        {{ $role->name }}
-                                    </option>
-                                @endforeach
-                                </select>
-                            </td>
-                            <td class="p-3 px-5 flex justify-end">
-                                <div class="flex">
-                                    <div>
-                                        <button type="submit"
-                                                class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button>
-                                    </div>
-                                    <div>
-                                        <form action="{{ route('clients.destroy', $client->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
+                <div style="display: flex; justify-content: center;">
+                    <table class=" text-md bg-white shadow-md rounded mb-4" style="width : 90%;">
+                        <tbody>
+                            <tr class="border-b">
+                                <th class="text-left p-3 px-5">Name</th>
+                                <th class="text-left p-3 px-5">Email</th>
+                                <th class="text-left p-3 px-5">Role</th>
+                                <th></th>
+                            </tr>
+                            @foreach ($clients as $client)
+                                <tr class="border-b hover:bg-orange-100 bg-gray-100">
+                                    <td class="p-3 px-5">
+                                        <p>{{ $client->name }}</p>
+                                    </td>
+                                    <td class="p-3 px-5">
+                                        <p>{{ $client->email }}</p>
+                                    </td>
+                                    <td class="p-3 px-5">
+                                        <div style="display: flex; align-items: center;">
+                                            <select class="bg-transparent" style="margin-right: 10px;">
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }}"
+                                                        @if ($client->role_id == $role->id) selected @endif>
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div>
+                                                <button type="submit"
+                                                    class="text-sm save-button focus:outline-none focus:shadow-outline"
+                                                    style="background: #2a2185;color : #ffff;">Save</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 px-5 flex justify-end">
+                                        <div>
+                                            <form action="{{ route('clients.destroy', $client->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
                                                     class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                </table>
+                                            </form>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                    </table>
+                </div>
             </div>
 
         </div>
+        <!-- =========== Scripts =========  -->
+        <script src="assets/js/main.js"></script>
 
-    </div>
-
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- ====== ionicons ======= -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
