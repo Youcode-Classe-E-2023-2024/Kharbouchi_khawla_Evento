@@ -99,64 +99,14 @@
         </div>
     </div>
     <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
+        @foreach ($categories as $category)
         <a href="#">
-            <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Copywriting
+            <span class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">
+                {{ $category->name }}
             </span>
         </a>
-        <a href="#">
-            <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Image
-                Generation
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Content
-                Creation
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Video
-                Generation
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Audio
-                Generation
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Design
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0"style="background-color: rgb(211, 68, 82);">Photo
-                Editing
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Writing
-                Assistant
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Project
-                Management
-            </span>
-        </a>
-        <a href="#">
-            <span
-                class="inline-block  text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">Video
-                Editing
-            </span>
-        </a>
+    @endforeach
+
     </div>
     <div class="container mx-auto mx-auto p-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">

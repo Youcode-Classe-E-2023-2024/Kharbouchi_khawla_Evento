@@ -7,6 +7,7 @@ use App\Models\client;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -48,9 +49,7 @@ Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
 
 
 // Home //
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // Detail //
