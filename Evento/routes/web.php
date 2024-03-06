@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\organisDash;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -23,9 +25,7 @@ Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
 Route::get('/event', function () {
     return view('admin.event');
 });
-Route::get('/Categorie', function () {
-    return view('admin./Categorie');
-});
+
 Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 
 // Authentification //
@@ -51,3 +51,12 @@ Route::get('/home', function () {
 Route::get('/detail', function () {
     return view('details');
 });
+// categories //
+Route::get('/Categorie', function () {
+    $categories = Category::all(); 
+    return view('admin.Categorie', ['categories' => $categories]);
+});
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{category}/delete', [CategoryController::class, 'softDelete'])->name('categories.softDelete');
+

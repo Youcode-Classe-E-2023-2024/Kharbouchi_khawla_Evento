@@ -8,80 +8,80 @@
     <title>Dashboard</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/category.css">
-
     <style>
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px;
-        }
-
-        .image-container img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-            max-width: 100%;
-            height: 40%;
-        }
-
-        .image-container img:hover {
-            transform: scale(1.05);
-        }
-
-        .containe {
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            margin: 10px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        table {
+            border: 2px solid #2a2185; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             overflow: hidden;
-            width: 300px;
         }
 
-        .card-header img {
+        th {
+            border: 2px solid #2a2185; 
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        input,
+        select {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
         }
 
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-            height: 180px;
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
         }
 
-        .tag {
-            border: #000000 1px solid;
-            border-radius: 50px;
-            font-size: 12px;
-            margin: 5px;
-            color: #0a0909;
-            padding: 5px 10px;
-            text-transform: uppercase;
+        button {
             cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
         }
 
-        .card-body p {
-            font-size: 13px;
-            margin: 0 0 40px;
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .bg-blue-500 {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .bg-red-500 {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
         }
     </style>
 
 </head>
 
 <body>
-     <!-- =============== Navigation ================ -->
-     <div class="container">
+    <!-- =============== Navigation ================ -->
+    <div class="container">
         <div class="navigation">
             <ul>
                 <li>
@@ -130,7 +130,7 @@
             </ul>
         </div>
 
-    
+
 
         <!-- ========================= Main ==================== -->
         <div class="main">
@@ -152,225 +152,115 @@
             </div>
 
             <!-- ================= New Categories ================ -->
-            <div class="containe">
-                <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px;margin-top:40px;">
-                    <h2>Les Categories</h2>
+
+            <div class="px-3 py-4 flex justify-center">
+                @if (session('success'))
+                <div id="success-alert"
+                    style="position: fixed; top: 20px; right: 20px; background-color: #28a745; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+                    {{ session('success') }}
                 </div>
+            @endif
+                <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px;margin-top:40px;">
+                    <h2>Categories</h2>
+                    <div style="display: flex; justify-content: center; align-items: center;margin-bottom: 40px;margin-top:40px;, ,">
+                        <button type="button" onclick="document.getElementById('demo-modal').showModal();"
+                            class="text-sm bg-red-500 hover:bg-red-700 mb-6 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                            style="background-color: #2a2185;">Add Catégories</button>
+                    </div>
+                <div style="display: flex; justify-content: center;">
+                    <table class="text-md bg-white shadow-md rounded mb-4 "
+                        style="width : 70%;" id="table">
+                        <tbody>
+                            <tr class="border-b">
+                                <th class="text-left p-3 px-5">Name</th>
+                                <th class="text-left p-3 px-5">Modifier</th>
+                                <th></th>
+                            </tr>
+                            @foreach ($categories as $category)
+                                <tr class="border-b hover:bg-orange-100 bg-gray-100">
+                                    <td class="p-3 px-5">
+                                        <p>{{ $category->name }}</p>
+                                    </td>
 
-                <main>
-                    <form id="form" autocomplete="off">
-                        <p class="alert"></p>
-                        <h3 class="title">Category</h3>
-                        <div class="control">
-                            <input type="text" id="entry" placeholder="Add Category">
-                            <button type="submit" class="btn submit-btn">Submit</button>
-                            <button type="button" class="btn cancel-btn ">Cancel</button>
+                                    <td class="p-3 px-5">
+                                        <form action="{{ route('categories.update', $category->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="text" name="name" placeholder="{{ $category->name }}"
+                                                class="text-sm bg-white rounded border focus:outline-none focus:shadow-outline"
+                                                style="width: 50%;">
+                                            <button type="submit"
+                                                class="mr-3 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                                Save
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="p-3 px-5 flex justify-end">
+                                        <form action="{{ route('categories.softDelete', $category->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                    </table>
+                </div>
+                    <!-- La Modal -->
+                    <dialog id="demo-modal"
+                        style="border:2px solid #2a2185 ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:30%; width:40%; align-items: center; justify-content: center;">
+                        <div
+                            style="display: flex; justify-content: center; margin-bottom:20px; align-items: center; margin-top: 20px;">
+                            <h2>Add Categorie</h2>
                         </div>
-                    </form>
+                        <!-- Formulaires ajustés pour utiliser Flexbox -->
+                        <form id="update-category-form" action="/categories" method="POST"
+                            style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                            @csrf
+                            <input type="text" name="name" placeholder="Nom de la catégorie"
+                                style="padding: 10px; margin-right: 10px; margin-left: 10px; flex-grow: 1;">
+                            <button type="submit"
+                                style="background-color: #2a2185; color: white; padding: 10px 20px;margin-right: 10px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                                Save
+                            </button>
+                        </form>
+                        <div
+                            style="display: flex; justify-content: center; width: 100%; margin-top:10px; margin-bottom:15px;">
+                            <button onclick="closeModal()"
+                                style="background-color: #2a2185; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                                Cancel
+                            </button>
+                        </div>
+                    </dialog>
+                <!-- =========== Scripts =========  -->
 
-                    <ul id="todo-list" class="list-container">
-                        <!--  <li class="list-item">
-                            <p class="text">Lorem ipsum dolor sit.</p>
-                            <i class='bx bxs-edit bx-sm'></i>
-                            <i class='bx bx-check bx-sm'></i>
-                            <i class='bx bxs-trash bx-sm'></i>
-                        </li> -->
-                    </ul>
-                    <button class="btn clear-btn d-none">Clear Items</button>
-                </main>
-            </div>
-        </div>
-        <script>
-            //Dom manipulation
-            const entry = document.getElementById('entry')
-            const form = document.getElementById('form')
-            const ul = document.getElementById('todo-list')
-            const alertP = document.querySelector('.alert')
+                @if (session('success'))
+                    <script>
+                        // Wait for 5 seconds (5000 milliseconds), then hide the success alert
+                        setTimeout(function() {
+                            var successAlert = document.getElementById('success-alert');
+                            if (successAlert.style.opacity !== "0") {
+                                successAlert.style.transition = "opacity 0.3s linear";
+                                successAlert.style.opacity = "0";
+                                setTimeout(function() {
+                                    successAlert.remove();
+                                }, 300); // Wait for the opacity transition, then remove the element
+                            }
+                        }, 3000);
+                    </script>
+                @endif
+                <script>
+                    function closeModal() {
+                        document.getElementById('demo-modal').style.display = 'none';
+                    }
+                </script>
+                <script src="assets/js/main.js"></script>
 
-            const clearBtn = document.querySelector('.clear-btn')
-            const submitBtn = document.querySelector('.submit-btn')
-            const cancelBtn = document.querySelector('.cancel-btn')
-
-            //LocalStorage Key
-            let LSkey = 'items';
-            //Edit points
-            let editFlag = false
-            let editElement; // an HTML element initially undefined
-            let editID; // same idea as above to pass the ID of the selected LS item.
-
-            // General Attached Events
-            window.addEventListener('DOMContentLoaded', setupItems) //Load content from LS
-            form.addEventListener("submit", addItem); // submit form
-            clearBtn.addEventListener('click', clearItems); // clear all
-            cancelBtn.addEventListener('click', setBackToDefault); //cancel Edit
-
-            function addItem(e) {
-                e.preventDefault()
-                let val = entry.value;
-                let id = new Date().getTime().toString(); //for LS
-
-                if (val && !editFlag) {
-                    // !editFlag means I am creating a new brand Item NO editing.
-                    createLIS(val, id)
-                    displayAlert('A new item has been added!', 'alert-success')
-                    clearBtn.classList.remove('d-none')
-                    //ads to LS
-                    addToLS(val, id)
-                } else if (val && editFlag) {
-                    editElement.innerText = val
-                    displayAlert("value changed", "alert-success");
-                    //edit the LS
-                    editLS(val, editID)
-                    setBackToDefault()
-                } else {
-                    displayAlert('No empty values!', 'alert-danger')
-                }
-                //clean input
-                entry.value = null
-            }
-
-            function createLIS(val, id) {
-                const li = document.createElement('li');
-                li.className = 'list-item';
-                li.setAttribute('data-id', id); //LS ID
-                li.innerHTML = `
-             <p class="text">${val}</p>
-              <i class='bx bxs-edit bx-sm'></i>
-               <i class='bx bx-check bx-sm'></i>
-             <i class='bx bxs-trash bx-sm'></i>`;
-
-                //icons listeners
-                li.querySelector('.bx.bxs-edit').addEventListener('click', editItem)
-                li.querySelector('.bx.bx-check').addEventListener('click', checkItem)
-                li.querySelector('.bx.bxs-trash').addEventListener('click', deleteItem)
-
-                ul.append(li)
-            }
-
-            //Icons functions
-            function editItem() {
-                let pText = this.previousElementSibling //p.text HTML element
-                // Now pass this element to be global with
-                editElement = pText;
-                // text value to the input
-                entry.value = pText.innerText
-                // editFLag for the submit actions
-                editFlag = true
-                //LS ID to make it "global"
-                editID = this.parentElement.dataset.id
-                // hide all icons
-                ul.querySelectorAll('.bx').forEach(icon => {
-                    icon.classList.toggle('v-none')
-                });
-                cancelBtn.classList.toggle('d-none');
-                submitBtn.innerText = 'Edit'
-                //editing mode - remove Clear items button
-                clearBtn.classList.add('d-none');
-            }
-
-            function checkItem() {
-                // this = icon itself
-                this.parentElement.classList.toggle('liChecked')
-            }
-
-            function deleteItem() {
-                let id = this.parentElement.dataset.id // LS ID
-                ul.removeChild(this.parentElement)
-                displayAlert('one item was removed!', 'alert-danger')
-                //if there is no more childs - remove the clear items btn
-                if (ul.children.length === 0) {
-                    clearBtn.classList.add('d-none')
-                }
-                //LS
-                removeFromLS(id)
-            }
-
-            //other functions
-            function displayAlert(msg, styles) {
-                alertP.innerText = msg
-                alertP.classList.add(styles)
-                setTimeout(() => {
-                    alertP.innerText = '';
-                    alertP.classList.remove(styles)
-                }, 1500)
-            }
-
-            function clearItems() {
-                ul.innerHTML = null
-                displayAlert('All elementes were removed!', 'alert-danger')
-                clearBtn.classList.add('d-none')
-                //LS
-                localStorage.clear();
-            }
-
-            function setBackToDefault() {
-                entry.value = null;
-                editFlag = false;
-                editElement = undefined;
-                editID = undefined; // LS edit and delete
-                submitBtn.innerText = 'Submit';
-                cancelBtn.classList.add('d-none');
-
-                clearBtn.classList.remove('d-none')
-                ul.querySelectorAll('.bx').forEach(icon => {
-                    icon.classList.toggle('v-none')
-                });
-            }
-
-            // LocalStorage Functions
-            function addToLS(val, id) {
-                let obj = {
-                    id,
-                    val
-                }
-                let items = getLS()
-                items.push(obj)
-                localStorage.setItem(LSkey, JSON.stringify(items))
-            }
-
-            function getLS() {
-                return localStorage.getItem(LSkey) ?
-                    JSON.parse(localStorage.getItem(LSkey)) : []
-            }
-
-            function removeFromLS(id) {
-                let items = getLS()
-                items = items.filter(item => item.id !== id)
-                //update LS
-                localStorage.setItem(LSkey, JSON.stringify(items))
-                //if there is no items left, remove the LS
-                if (items.length === 0) {
-                    localStorage.removeItem(LSkey)
-                }
-            }
-
-            function editLS(val, editID) {
-                let items = getLS()
-                items = items.map(item => {
-                    if (item.id === editID) item.val = val
-                    return item
-                })
-                //update LS
-                localStorage.setItem(LSkey, JSON.stringify(items))
-            }
-
-            function setupItems() {
-                let items = getLS()
-                if (items.length > 0) {
-                    items.forEach(item => {
-                        createLIS(item.val, item.id)
-                    })
-                    clearBtn.classList.remove('d-none')
-                }
-            }
-        </script>
-
-        <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
-
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                <!-- ====== ionicons ======= -->
+                <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
