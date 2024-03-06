@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EventController;
 
 
 
@@ -67,3 +68,5 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}/delete', [CategoryController::class, 'softDelete'])->name('categories.softDelete');
 
+// Organisateur //
+Route::post('/events', [EventController::class, 'store']);

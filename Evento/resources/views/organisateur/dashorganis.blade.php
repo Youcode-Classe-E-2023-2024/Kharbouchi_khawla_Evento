@@ -186,7 +186,11 @@
                 </div>
             </div>
             <!-- ================= New Customers ================ -->
-
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
             <div class="px-3 py-4 flex justify-center">
                 <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px;margin-top:40px;">
                     <h2 style="margin-bottom: 40px;">Events</h2>
@@ -245,14 +249,16 @@
     padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%);">
     <button onclick="document.getElementById('demo-modal').close();">x</button>
-    <form action="">
-        <input type="text" placeholder="title" />
-        <textarea placeholder="Add Description" tabindex="5" required
+    <form action="/events" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="image" placeholder="image"/>
+        <input type="text" name="title" placeholder="title" />
+        <textarea placeholder="Add Description" tabindex="5" name="description" required
             style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
-        <input type="number" placeholder="Places" />
-        <input type="number" placeholder="Prix DH" />
-        <input type="text" placeholder="Lieu" />
-        <input type="date" placeholder="date finale" />
+        <input type="number" name="places" placeholder="Places" />
+        <input type="number" name="price" placeholder="Prix DH" />
+        <input type="text" name="location" placeholder="Lieu" />
+        <input type="date" name="event_date" placeholder="date finale" />
         <button type="submit" class="btn fill" style="margin-top: 20px; ">Save</button>
     </form>
 </dialog>
