@@ -41,7 +41,7 @@
             height: 100%;
         }
 
-        .banner-image {
+        .banner-image img {
 
             background-size: cover;
             height: 200px;
@@ -198,54 +198,50 @@
                         Event</button>
                 </div>
                 <div class="ana">
-                    
-                    <div class="containe">
-                        <div class="wrapper">
-                            <div class="banner-image">
-                                <img src="#" alt="moi">
+                    @foreach ($events as $event)
+                        <div class="containe">
+                            <div class="wrapper">
+                                <div class="banner-image">
+                                    <img src="{{ asset('storage/images/' . $event->image) }}" alt="{{ $event->title }}">
+                                </div>
+                                <h1>{{ $event->title }}</h1>
+                                <p>{{ $event->location }}</p>
                             </div>
-                            <h1>sfdcsfc</h1>
-                            <p>sfiojf,c</p>
+                            <div class="button-wrapper">
+                                <button class="btn outline"
+                                    >Delete</button>
+                                <button class="btn fill" data-event-id="{{ $event->id }}" onclick="document.getElementById('demo-modal1').showModal();">MODIFIER</button>
+                            </div>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="btn outline">DETAILS</button>
-                            <button class="btn fill">MODIFIER</button>
-                        </div>
-                    </div>
-                   
-                    <div class="containe">
-                        <div class="wrapper">
-                            <div class="banner-image"> </div>
-                            <h1> Toyota Supra</h1>
-                            <p>Lorem ipsum dolor sit amet, <br />
-                                consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="button-wrapper">
-                            <button class="btn outline">DETAILS</button>
-                            <button class="btn fill">BUY NOW</button>
-                        </div>
-                    </div>
-                    <div class="containe">
-                        <div class="wrapper">
-                            <div class="banner-image"> </div>
-                            <h1> Toyota Supra</h1>
-                            <p>Lorem ipsum dolor sit amet, <br />
-                                consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="button-wrapper">
-                            <button class="btn outline">DETAILS</button>
-                            <button class="btn fill">BUY NOW</button>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
 
         </div>
-
     </div>
-
     </div>
-    <!-- =========== Modal =========  -->
+    <!-- =========== Modal de Details =========  -->
+    <dialog id="demo-modal1"
+    style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;transform: translate(-50%, -50%);">
+    <button onclick="document.getElementById('demo-modal1').close();">x</button>
+    <h1 style="text-align: center;">{{ $event->title }}</h1>
+    <div style=" display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 20px;">
+    <div  class="image-container" style="margin-right: 20px">
+        <img src="{{ asset('storage/images/' . $event->image) }}" alt="">
+    </div>
+    <div class="inputs-container" style="display: flex;flex-direction: column;gap:5px;">
+        <input type="text" name="category_name" value="{{ $event->category_name }}">
+        <input type="number" name="price" value="{{ $event->price }}" />
+        <h3 style="color: #fff">{{ $event->location }}</h3>
+        <input type="number" name="places" value="{{ $event->places }}">
+    </div>
+</div>
+    <textarea  value="{{ $event->description }}" name="description" id="" cols="30" rows="10"  style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
+    <button class="btn fill">MODIFIER</button>
+</dialog>
+
+    <!-- =========== Modal de Add =========  -->
     <dialog id="demo-modal"
         style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);
@@ -258,13 +254,14 @@
             <input type="text" name="title" placeholder="title" />
             <textarea placeholder="Add Description" tabindex="5" name="description" required
                 style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
-                <select  name="category_name" id="category-select" style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">
-                    <option value="">--Please choose an option--</option>
-                    @foreach ($categories as $category)
+            <select name="category_name" id="category-select"
+                style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">
+                <option value="">--Please choose an option--</option>
+                @foreach ($categories as $category)
                     <option name="{{ $category->name }}">{{ $category->name }}</option>
-                    @endforeach
-                    
-                </select>
+                @endforeach
+
+            </select>
             <input type="number" name="places" placeholder="Places" />
             <input type="number" name="price" placeholder="Prix DH" />
             <input type="text" name="location" placeholder="Lieu" />

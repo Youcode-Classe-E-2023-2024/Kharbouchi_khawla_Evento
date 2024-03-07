@@ -15,6 +15,7 @@ use App\Http\Controllers\EventController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,5 +74,5 @@ Route::delete('/categories/{category}/delete', [CategoryController::class, 'soft
 
 // Organisateur //
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::get('/organisateur', [organisDash::class, 'showDashboard'])->name('dashboard.show');
 
-Route::get('/organisateur', [organisDash::class, 'showForm'])->name('form.show');
