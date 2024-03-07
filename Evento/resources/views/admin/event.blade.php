@@ -74,25 +74,144 @@
         ::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
+
         .contenedor {
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
-}
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+        }
 
-.img {
-  flex: 1 1 200px;
-  background-color: #FF5F1F;
-  min-height: 300px;
-  height: auto;
-}
+        .img {
+            flex: 1 1 200px;
+            background-color: #FF5F1F;
+            min-height: 300px;
+            height: auto;
+        }
 
-.contenido {
-  flex: 1 1 300px;
-  background-color: #fff;
-  padding: 20px;
-}
+        .contenido {
+            flex: 1 1 300px;
+            background-color: #fff;
+            padding: 20px;
+        }
     </style>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+        .ana {
+            gap: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .containe {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(17, 25, 40, 0.25);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            padding: 38px;
+            filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 30%;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-image img {
+
+            background-size: cover;
+            height: 300px;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.255)
+        }
+
+        h1 {
+            font-family: 'Righteous', sans-serif;
+            color: rgba(255, 255, 255, 0.98);
+            text-transform: uppercase;
+            font-size: 25px;
+
+        }
+
+        p {
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            font-size: 0.8rem;
+            line-height: 150%;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .button-wrapper {
+            margin-top: 18px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 12px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .btn+.btn {
+            margin-left: 10px;
+        }
+
+        .outline {
+            background:rgba(245, 50, 40, 0.9) ;
+            color: rgba(245, 251, 253, 0.9);
+            border: 1px solid rgba(0, 212, 255, 0.6);
+            transition: all .3s ease;
+
+        }
+
+        .outline:hover {
+            transform: scale(1.125);
+            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.9);
+            transition: all .3s ease;
+        }
+
+        .fill {
+            background: rgba(19, 255, 74, 0.845);
+            color: rgba(255, 255, 255, 0.95);
+            filter: drop-shadow(0);
+            font-weight: bold;
+            transition: all .3s ease;
+        }
+
+        .fill:hover {
+            transform: scale(1.125);
+            border-color: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+            transition: all .3s ease;
+        }
+
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -164,7 +283,7 @@
                 </div>
             </div>
             <!-- ================= New Events ================ -->
-            <div class="containe">
+            <div class="contain">
                 <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px; margin-top: 40px;">
                     <h2>Les events</h2>
                 </div>
@@ -184,14 +303,14 @@
                             </thead>
                             <tbody>
                                 @foreach ($events as $event)
-                                <tr>
-                                    <td style="text-align: center;"><img
-                                            src="{{ asset('storage/images/'.$event->image) }}"
-                                            onclick="document.getElementById('demo-modal').showModal();" /></td>
-                                    <td style="text-align: center;">{{ $event->title }}</td>
-                                    <td style="text-align: center;">{{ $event->location }}</td>
-                                    <td style="text-align: center;"><button>Validé</button></td>
-                                </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><img
+                                                src="{{ asset('storage/images/' . $event->image) }}"
+                                                onclick="document.getElementById('demo-modal').showModal();" /></td>
+                                        <td style="text-align: center;">{{ $event->title }}</td>
+                                        <td style="text-align: center;">{{ $event->location }}</td>
+                                        <td style="text-align: center;"><button>Validé</button></td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -200,26 +319,32 @@
             </div>
             <!-- La Modal -->
             <dialog id="demo-modal"
-        style="border:2px solid #2a2185 ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:auto; width:auto; align-items: center; justify-content: center;">
-        
-    <div class="contenedor" style="display:flex; flex-grow:1; padding: 20px; position: relative;">
-        <button onclick="document.getElementById('demo-modal').close();">x</button>
-        <div class="img">
-            <img src="#_" />
-        </div>   
-        <div class="contenido">
-            <h1>Lorem Ipsum</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate turpis ac ex lacinia eleifend...</p>
-            <h3>400DH / 12 PLACES</h3>
-            <h3>Lieu : fhgjlkm</h3>
-            <div class="buttons-container" style="position: absolute;margin-bottom:15px; bottom: 20px; right: 20px; display: flex; flex-direction: row; align-items: center; justify-content: start;">
-                <button style="margin-right: 10px; margin-bottom: 10px; background-color: #1be608; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Validé</button>
-                <button style="margin-bottom: 10px;margin-right: 10px;  background-color: #e81919; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Invalidé</button>
+                style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;transform: translate(-50%, -50%);">
+                <button onclick="document.getElementById('demo-modal').close();">x</button>
+                <h1 style="text-align: center;">{{ $event->title }}</h1>
+                <div
+                    style=" display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 20px;">
+                    <div class="image-container" style="margin-right: 10px">
+                        <img src="{{ asset('storage/images/' . $event->image) }}" alt="">
+                    </div>
+                    <div class="inputs-container" style="display: flex;flex-direction: column;gap:5px;">
+                        <h3 style="color: #fff">{{ $event->category_name }}</h3>
+                        <h3 style="color: #fff">{{ $event->price }}</h3>
+                        <h3 style="color: #fff">{{ $event->location }}</h3>
+                        <h3 style="color: #fff">{{ $event->places }}</h3>
+                    </div>
+                </div>
+                <div style="width: 95%">
+                <span style="color: #fff">
+                    {{ $event->description }}</span>
+                </div>
+                <div style="display: flex;flex-direction: row; margin: 20px;">
+                <button class="btn fill">VALIDE</button>
+                <button class="btn outline"
+                >INVALIDE</button>
             </div>
-        </div>
-    </div>
-</dialog>
-            
+            </dialog>
+
 
         </div>
     </div>
