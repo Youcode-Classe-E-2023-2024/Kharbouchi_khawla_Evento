@@ -258,10 +258,10 @@
             <input type="text" name="title" placeholder="title" />
             <textarea placeholder="Add Description" tabindex="5" name="description" required
                 style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
-                <select name="pets" id="pet-select" style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">
+                <select  name="category_name" id="category-select" style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">
                     <option value="">--Please choose an option--</option>
                     @foreach ($categories as $category)
-                    <option value="">{{ $category->name }}</option>
+                    <option name="{{ $category->name }}">{{ $category->name }}</option>
                     @endforeach
                     
                 </select>

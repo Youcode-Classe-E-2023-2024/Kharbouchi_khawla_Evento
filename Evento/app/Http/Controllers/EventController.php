@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function store(Request $request)
+
     {
         if ($request->hasFile('image')) {
             $filename = $request->image->getClientOriginalName();
@@ -27,7 +28,7 @@ class EventController extends Controller
             'price' => $request->price,
             'location' => $request->location,
             'event_date' => $request->event_date, 
-            'category' => $request->category,
+            'category_name' => $request->category_name,
         ]);
         
         return back()->with('success', 'Event created successfully.');
