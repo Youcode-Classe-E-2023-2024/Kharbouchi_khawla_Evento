@@ -30,6 +30,7 @@ Route::get('/event', function () {
 });
 Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 
+Route::get('/event', [EventController::class, 'showEvents']);
 
 // Authentification //
 Route::get('/login', function () {
@@ -70,4 +71,5 @@ Route::delete('/categories/{category}/delete', [CategoryController::class, 'soft
 
 // Organisateur //
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
-Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+
+

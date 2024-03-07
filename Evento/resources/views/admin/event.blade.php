@@ -183,14 +183,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($events as $event)
                                 <tr>
                                     <td style="text-align: center;"><img
-                                            src="https://drive.google.com/thumbnail?id=1qw3KUJnYgvnJHQP-yY13u_rXrJO8ZbL_"
+                                            src="{{ asset('storage/images/'.$event->image) }}"
                                             onclick="document.getElementById('demo-modal').showModal();" /></td>
-                                    <td style="text-align: center;">Rakhi Gupta</td>
-                                    <td style="text-align: center;">rakhigupta@gmail.com</td>
+                                    <td style="text-align: center;">{{ $event->title }}</td>
+                                    <td style="text-align: center;">{{ $event->location }}</td>
                                     <td style="text-align: center;"><button>Validé</button></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

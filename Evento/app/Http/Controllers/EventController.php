@@ -31,10 +31,9 @@ class EventController extends Controller
         
         return back()->with('success', 'Event created successfully.');
     }
-    public function show($id)
-    {
-        $events = Event::all(); // Retrieves all events from the database
-        return view('organisateur.dashorganis', compact('events')); // Passes events to the view
+
+    public function showEvents() {
+        $events = Event::all(); 
+        return view('admin.event', ['events' => $events]);
     }
-    
 }

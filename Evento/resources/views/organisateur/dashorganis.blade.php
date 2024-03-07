@@ -198,11 +198,11 @@
                         Event</button>
                 </div>
                 <div class="ana">
-                    @foreach ($events as $event)
+                    
                     <div class="containe">
                         <div class="wrapper">
                             <div class="banner-image">
-                                <img src="{{ $event->image ? asset('storage/images/' . $event->image) : asset('path/to/default/image.jpg') }}" alt="{{ $event->title }}">
+                                <img src="{{ asset('storage/images/'.$event->image) }}" alt="moi">
                             </div>
                             <h1>{{ $event->title }}</h1>
                             <p>{{ $event->location }}</p>
@@ -212,7 +212,7 @@
                             <button class="btn fill">MODIFIER</button>
                         </div>
                     </div>
-                    @endforeach
+                   
                     <div class="containe">
                         <div class="wrapper">
                             <div class="banner-image"> </div>
