@@ -202,10 +202,10 @@
                     <div class="containe">
                         <div class="wrapper">
                             <div class="banner-image">
-                                <img src="{{ asset('storage/images/'.$event->image) }}" alt="moi">
+                                <img src="#" alt="moi">
                             </div>
-                            <h1>{{ $event->title }}</h1>
-                            <p>{{ $event->location }}</p>
+                            <h1>sfdcsfc</h1>
+                            <p>sfiojf,c</p>
                         </div>
                         <div class="button-wrapper">
                             <button class="btn outline">DETAILS</button>
@@ -258,6 +258,13 @@
             <input type="text" name="title" placeholder="title" />
             <textarea placeholder="Add Description" tabindex="5" name="description" required
                 style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
+                <select name="pets" id="pet-select" style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">
+                    <option value="">--Please choose an option--</option>
+                    @foreach ($categories as $category)
+                    <option value="">{{ $category->name }}</option>
+                    @endforeach
+                    
+                </select>
             <input type="number" name="places" placeholder="Places" />
             <input type="number" name="price" placeholder="Prix DH" />
             <input type="text" name="location" placeholder="Lieu" />

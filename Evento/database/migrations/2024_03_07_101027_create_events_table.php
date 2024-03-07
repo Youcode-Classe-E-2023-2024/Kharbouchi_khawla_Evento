@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('category')->nullable();
             $table->integer('places');
             $table->decimal('price', 8, 2);
             $table->string('location');

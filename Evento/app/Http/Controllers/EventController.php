@@ -27,6 +27,7 @@ class EventController extends Controller
             'price' => $request->price,
             'location' => $request->location,
             'event_date' => $request->event_date, 
+            'category' => $request->category,
         ]);
         
         return back()->with('success', 'Event created successfully.');
