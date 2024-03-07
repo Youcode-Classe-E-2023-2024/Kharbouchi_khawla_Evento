@@ -209,7 +209,7 @@
                             </div>
                             <div class="button-wrapper">
                                 <button class="btn outline"
-                                    >Delete</button>
+                                    >DELETE</button>
                                 <button class="btn fill" data-event-id="{{ $event->id }}" onclick="document.getElementById('demo-modal1').showModal();">MODIFIER</button>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
         <input type="number" name="places" value="{{ $event->places }}">
     </div>
 </div>
-    <textarea  value="{{ $event->description }}" name="description" id="" cols="30" rows="10"  style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
+    <textarea  placeholder="" name="description" id="" cols="30" rows="10"  style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">{{ $event->description }}</textarea>
     <button class="btn fill">MODIFIER</button>
 </dialog>
 
