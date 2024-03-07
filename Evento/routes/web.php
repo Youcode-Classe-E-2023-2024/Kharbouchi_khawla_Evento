@@ -69,4 +69,5 @@ Route::put('/categories/{category}', [CategoryController::class, 'update'])->nam
 Route::delete('/categories/{category}/delete', [CategoryController::class, 'softDelete'])->name('categories.softDelete');
 
 // Organisateur //
-Route::post('/events', [EventController::class, 'store']);
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');

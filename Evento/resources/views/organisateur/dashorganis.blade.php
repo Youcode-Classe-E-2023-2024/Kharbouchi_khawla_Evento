@@ -42,8 +42,7 @@
         }
 
         .banner-image {
-            background-image: url(https://images.unsplash.com/photo-1641326201918-3cafc641038e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80);
-            background-position: center;
+
             background-size: cover;
             height: 200px;
             width: 100%;
@@ -186,11 +185,12 @@
                 </div>
             </div>
             <!-- ================= New Customers ================ -->
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+            @if (session('success'))
+                <div id="success-alert"
+                    style="position: fixed; top: 20px; right: 20px; background-color: #28a745; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="px-3 py-4 flex justify-center">
                 <div class="title" style="width: 100%; text-align: center; margin-bottom: 40px;margin-top:40px;">
                     <h2 style="margin-bottom: 40px;">Events</h2>
@@ -198,18 +198,21 @@
                         Event</button>
                 </div>
                 <div class="ana">
+                    @foreach ($events as $event)
                     <div class="containe">
                         <div class="wrapper">
-                            <div class="banner-image"> </div>
-                            <h1> Toyota Supra</h1>
-                            <p>Lorem ipsum dolor sit amet, <br />
-                                consectetur adipiscing elit.</p>
+                            <div class="banner-image">
+                                <img src="{{ $event->image ? asset('storage/images/' . $event->image) : asset('path/to/default/image.jpg') }}" alt="{{ $event->title }}">
+                            </div>
+                            <h1>{{ $event->title }}</h1>
+                            <p>{{ $event->location }}</p>
                         </div>
                         <div class="button-wrapper">
                             <button class="btn outline">DETAILS</button>
                             <button class="btn fill">MODIFIER</button>
                         </div>
                     </div>
+                    @endforeach
                     <div class="containe">
                         <div class="wrapper">
                             <div class="banner-image"> </div>
@@ -244,25 +247,40 @@
     </div>
     <!-- =========== Modal =========  -->
     <dialog id="demo-modal"
-    style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);
+        style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);
     padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%);">
-    <button onclick="document.getElementById('demo-modal').close();">x</button>
-    <form action="/events" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="file" name="image" placeholder="image"/>
-        <input type="text" name="title" placeholder="title" />
-        <textarea placeholder="Add Description" tabindex="5" name="description" required
-            style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
-        <input type="number" name="places" placeholder="Places" />
-        <input type="number" name="price" placeholder="Prix DH" />
-        <input type="text" name="location" placeholder="Lieu" />
-        <input type="date" name="event_date" placeholder="date finale" />
-        <button type="submit" class="btn fill" style="margin-top: 20px; ">Save</button>
-    </form>
-</dialog>
+        <button onclick="document.getElementById('demo-modal').close();">x</button>
+        <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="image" placeholder="image" />
+            <input type="text" name="title" placeholder="title" />
+            <textarea placeholder="Add Description" tabindex="5" name="description" required
+                style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;"></textarea>
+            <input type="number" name="places" placeholder="Places" />
+            <input type="number" name="price" placeholder="Prix DH" />
+            <input type="text" name="location" placeholder="Lieu" />
+            <input type="date" name="event_date" placeholder="date finale" />
+            <button type="submit" class="btn fill" style="margin-top: 20px; ">Save</button>
+        </form>
+    </dialog>
     <!-- =========== Scripts =========  -->
+
+    @if (session('success'))
+        <script>
+            setTimeout(function() {
+                var successAlert = document.getElementById('success-alert');
+                if (successAlert.style.opacity !== "0") {
+                    successAlert.style.transition = "opacity 0.3s linear";
+                    successAlert.style.opacity = "0";
+                    setTimeout(function() {
+                        successAlert.remove();
+                    }, 300);
+                }
+            }, 3000);
+        </script>
+    @endif
     <script src="assets/js/main.js"></script>
 
     <!-- ====== ionicons ======= -->
