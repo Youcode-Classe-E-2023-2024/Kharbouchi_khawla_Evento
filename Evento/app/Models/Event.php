@@ -11,5 +11,9 @@ class Event extends Model
     protected $fillable = [
         'title', 'description', 'places', 'price', 'location', 'event_date', 'image', 'category_name'
     ];
+  public function validity()
+{
+    return $this->hasOne(Validity::class, 'event_id');
+}
 
 }

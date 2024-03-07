@@ -309,7 +309,12 @@
                                                 onclick="document.getElementById('demo-modal').showModal();" /></td>
                                         <td style="text-align: center;">{{ $event->title }}</td>
                                         <td style="text-align: center;">{{ $event->location }}</td>
-                                        <td style="text-align: center;"><button>Validé</button></td>
+                                        <td style="text-align: center;">             @if(optional($event->validity)->valid) <!-- Use optional() to avoid errors if $event->validity is null -->
+                                            <button style="background-color: green; color: white;">Validé</button>
+                                        @else
+                                            <button style="background-color: red; color: white;">Non validé</button>
+                                        @endif
+                            
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -339,9 +344,14 @@
                     {{ $event->description }}</span>
                 </div>
                 <div style="display: flex;flex-direction: row; margin: 20px;">
-                <button class="btn fill">VALIDE</button>
-                <button class="btn outline"
-                >INVALIDE</button>
+                    <form method="POST" action="{{ route('event.validate', $event->id) }}">
+                        @csrf
+                        <input type="hidden" name="event_id" value="{{ $event->id }}">
+                        <div style="display: flex; flex-direction: row; margin: 20px;">
+                            <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
+                            <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
+                        </div>
+                    </form>
             </div>
             </dialog>
 

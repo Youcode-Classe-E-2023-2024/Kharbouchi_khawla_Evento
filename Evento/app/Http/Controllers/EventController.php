@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\Validity;
 
 class EventController extends Controller
 {
+    public function index()
+    {
+        // Retrieve all events with their 'validity' relationship
+        $events = Event::with('validity')->get();
+        
+        // Pass the events to the view
+        return view('events.index', compact('events'));
+    }
+    
     public function store(Request $request)
 
     {
@@ -38,4 +48,18 @@ class EventController extends Controller
         $events = Event::all(); 
         return view('admin.event', ['events' => $events]);
     }
+    public function validateEvent(Request $request, Event $event)
+{
+    $validatedData = $request->validate([
+        'event_id' => 'required|exists:events,id',
+        'valid' => 'required|boolean',
+    ]);
+
+    Validity::updateOrCreate(
+        ['event_id' => $validatedData['event_id']],
+        ['valid' => $validatedData['valid']]
+    );
+
+    return redirect()->back()->with('success', 'Event validation status updated successfully.');
+}
 }

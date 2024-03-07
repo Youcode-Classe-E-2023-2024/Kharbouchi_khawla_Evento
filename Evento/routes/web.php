@@ -32,8 +32,10 @@ Route::get('/event', function () {
     return view('admin.event');
 });
 Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
-
 Route::get('/event', [EventController::class, 'showEvents']);
+// validation des events //
+Route::post('/events/validate/{event}', [EventController::class, 'validateEvent'])->name('event.validate');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 // Authentification //
 Route::get('/login', function () {
