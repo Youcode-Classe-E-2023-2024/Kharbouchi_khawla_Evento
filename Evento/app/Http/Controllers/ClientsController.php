@@ -84,7 +84,7 @@ class ClientsController extends Controller
     public function destroy($id)
     {
         $client = Client::findOrFail($id);
-        $client->delete(); // Ceci effectuera un soft delete
+        $client->delete(); 
     
         return redirect()->back()->with('success', 'Client successfully deleted.');
     }
@@ -94,13 +94,23 @@ class ClientsController extends Controller
         'email' => 'required|email',
         'password' => 'required',
     ]);
-
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
 
-        return redirect()->intended('/home');
+        // Après une tentative de connexion réussie, obtenez l'instance de l'utilisateur connecté
+        $user = Auth::user();
+
+        // Vérifiez maintenant le rôle de l'utilisateur et redirigez en conséquence
+        if ($user->role->name === 'organisateur') {
+            return redirect('/organisateur');
+        }
+        elseif ($user->role->name === 'admin') {
+            return redirect('/dashboard');
+        } else {
+            // Redirection pour les utilisateurs non administrateurs
+            return redirect('/home');
+        }
     }
-    return redirect()->route('login')->with('success', 'Account successfully created!');
 
 
 }

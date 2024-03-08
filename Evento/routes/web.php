@@ -39,21 +39,13 @@ Route::post('/events/validate/{event}', [EventController::class, 'validateEvent'
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 // Authentification //
-Route::get('/login', function () {
-    return view('Auth.login');
-})->name('login');
+Route::get('/login', function () {return view('Auth.login');})->name('login');
 Route::post('/login', [ClientsController::class, 'login'])->name('login.submit');
-
-Route::get('/register', function () {
-    return view('Auth.register'); 
-});
-Route::post('/register', [ClientsController::class, 'store'])->name('client.store');
+Route::get('/', function () {return view('Auth.register'); });
+Route::post('/', [ClientsController::class, 'store'])->name('client.store');
 
 
 // Forgot password //
-
-// Organisateur //
-Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
 
 
 // Home //
@@ -78,7 +70,16 @@ Route::delete('/categories/{category}/delete', [CategoryController::class, 'soft
 // Organisateur //
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/organisateur', [organisDash::class, 'showDashboard'])->name('dashboard.show');
+Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
+
 
 // Role //
 Route::patch('/clients/{client}/updateRole', [ClientsController::class, 'updateRole'])->name('clients.updateRole');
 Route::delete('/clients/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
+// Middlwire //
+Route::middleware(['checkrole:admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/event', [EventController::class, 'index'])->name('event.index');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+});

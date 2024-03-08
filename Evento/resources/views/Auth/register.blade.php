@@ -110,8 +110,8 @@
 
                 <div class="text-sm flex justify-between items-center mt-3">
                     <p>If you have an account...</p>
-                    <button
-                        class="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  ">Login</button>
+                    <a href="/login"><button
+                        class="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  ">Login</button></a>
                 </div>
             </div>
 
