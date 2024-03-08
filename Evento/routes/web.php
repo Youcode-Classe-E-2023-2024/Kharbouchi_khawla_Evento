@@ -83,3 +83,8 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 });
+Route::middleware(['checkrole:organisateur'])->group(function () {
+    Route::post('/events', [EventController::class, 'store'])->name('events.store');
+    Route::get('/organisateur', [organisDash::class, 'showDashboard'])->name('dashboard.show');
+    Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
+});
