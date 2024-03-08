@@ -111,62 +111,22 @@
     <div class="container mx-auto mx-auto p-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             <!-- Replace this with your grid items -->
-            <div class="bg-white rounded-lg border p-4">
-                <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
+            @foreach($events as $event)
+            <div class="rounded-lg border p-4" style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));">
+                <img src="{{ asset('storage/images/' . $event->image) }}" alt="Placeholder Image"
                     class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
                 <div class="px-1 py-4">
-                    <div class="font-bold text-xl mb-2">Blog Title</div>
-                    <p class="text-gray-700 text-base">
-                        This is a simple blog card example using Tailwind CSS. You can replace this text with
-                        your own blog content.
-                    </p>
+                    <div class="font-bold text-xl mb-2">{{ $event->title }}</div>
+                    <h3 class="text-gray-700 text-base">
+                        Lieu: {{ $event->location }}
+                    </h3>
                 </div>
                 <div class="px-1 py-4">
                     <a href="#" class="text-blue-500 hover:underline">Read More</a>
                 </div>
             </div>
-            <div class="bg-white rounded-lg border p-4">
-                <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
-                <div class="px-1 py-4">
-                    <div class="font-bold text-xl mb-2">Blog Title</div>
-                    <p class="text-gray-700 text-base">
-                        This is a simple blog card example using Tailwind CSS. You can replace this text with
-                        your own blog content.
-                    </p>
-                </div>
-                <div class="px-1 py-4">
-                    <a href="#" class="custom-text-color hover:underline" style=" color: rgb(211, 68, 82); text-decoration: underline;">Read More</a>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg border p-4">
-                <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
-                <div class="px-1 py-4">
-                    <div class="font-bold text-xl mb-2">Blog Title</div>
-                    <p class="text-gray-700 text-base">
-                        This is a simple blog card example using Tailwind CSS. You can replace this text with
-                        your own blog content.
-                    </p>
-                </div>
-                <div class="px-1 py-4">
-                    <a href="#" class="text-blue-500 hover:underline">Read More</a>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg border p-4">
-                <img src="https://placehold.co/300x200/d1d4ff/352cb5.png" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
-                <div class="px-1 py-4">
-                    <div class="font-bold text-xl mb-2">Blog Title</div>
-                    <p class="text-gray-700 text-base">
-                        This is a simple blog card example using Tailwind CSS. You can replace this text with
-                        your own blog content.
-                    </p>
-                </div>
-                <div class="px-1 py-4">
-                    <a href="#" class="text-blue-500 hover:underline">Read More</a>
-                </div>
-            </div>
+            @endforeach
+
             <!-- Add more items as needed -->
             <div class="flex justify-center mt-6">
 

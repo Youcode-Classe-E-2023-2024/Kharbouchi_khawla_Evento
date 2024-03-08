@@ -9,10 +9,10 @@ class Client extends Authenticatable
     use SoftDeletes;
     use Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'role'];
+    protected $fillable = ['name', 'email', 'password', 'role_id']; 
 
     public function role()
-{
-    return $this->belongsTo(Role::class, 'role_id');
-}
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Event;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all(); 
-        return view('home', ['categories' => $categories]);
+        $categories = Category::all();
+    
+        // Récupération des événements valides uniquement
+        $events = Event::whereHas('validity', function($query) {
+            $query->where('valid', true);
+        })->get();
+    
+        // Passage des événements valides et des catégories à la vue
+        return view('home', ['categories' => $categories, 'events' => $events]);
     }
     
 

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('role')->default('client');
-            $table->timestamps();
+        Schema::table('clients', function (Blueprint $table) {
+            $table->softDeletes(); // Ajoute la colonne deleted_at
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::table('clients', function (Blueprint $table) {
+            $table->dropSoftDeletes(); // Supprime la colonne deleted_at
+        });
     }
 };

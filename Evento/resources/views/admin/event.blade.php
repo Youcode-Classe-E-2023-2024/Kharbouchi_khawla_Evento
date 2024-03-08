@@ -354,6 +354,22 @@
                     </form>
             </div>
             </dialog>
+            <script>
+                function openModal(eventId) {
+                    // Example: Fetch event details stored in data attributes or perform an AJAX call to get the details
+                    var eventTitle = document.querySelector(`#event-${eventId} .event-title`).innerText;
+                    var eventImage = document.querySelector(`#event-${eventId} .event-image`).src;
+                    // Add more details as needed
+                
+                    // Populate the modal
+                    document.querySelector('#demo-modal .modal-title').innerText = eventTitle;
+                    document.querySelector('#demo-modal .modal-image').src = eventImage;
+                    // Populate more details similarly
+                
+                    // Open the modal
+                    document.getElementById('demo-modal').showModal();
+                }
+                </script>
 
 
         </div>

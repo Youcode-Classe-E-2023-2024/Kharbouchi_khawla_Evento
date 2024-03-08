@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Client; 
+use App\Models\Role; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,13 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        
-    }
+
+            $clients = Client::with('role')->get();
+    
+            $roles = Role::all();
+    
+            return view('admin.Dashboard', ['clients' => $clients, 'roles' => $roles]);
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -34,16 +40,20 @@ class ClientsController extends Controller
             'email' => 'required|string|email|max:255|unique:clients',
             'password' => 'required|string|min:6',
         ]);
+        
+        // Récupérer l'ID du rôle "client"
+        $clientRoleId = Role::where('name', 'client')->first()->id;
     
         Client::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
-            'role' => 'client', 
+            'role_id' => $clientRoleId, // Associer le rôle "client" par défaut
         ]);
     
         return redirect()->route('client.store')->with('success', 'Account successfully created!');
     }
+    
 
     /**
      * Display the specified resource.
@@ -95,4 +105,16 @@ class ClientsController extends Controller
 
 
 }
+public function updateRole(Request $request, Client $client)
+{
+    $validated = $request->validate([
+        'role_id' => 'required|exists:roles,id',
+    ]);
+
+    $client->role_id = $validated['role_id'];
+    $client->save();
+
+    return redirect()->route('clients.index')->with('success', 'Client role updated successfully.');
+}
+
 }

@@ -28,6 +28,7 @@ use App\Http\Controllers\EventController;
 */
 
 Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
+Route::get('/dashboard', [ClientsController::class, 'index']);
 Route::get('/event', function () {
     return view('admin.event');
 });
@@ -78,3 +79,6 @@ Route::delete('/categories/{category}/delete', [CategoryController::class, 'soft
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/organisateur', [organisDash::class, 'showDashboard'])->name('dashboard.show');
 
+// Role //
+Route::patch('/clients/{client}/updateRole', [ClientsController::class, 'updateRole'])->name('clients.updateRole');
+Route::delete('/clients/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');

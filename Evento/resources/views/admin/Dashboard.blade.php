@@ -152,7 +152,7 @@
                 <div class="card">
                     <div>
                         @foreach ($clients as $client)
-                        <div class="numbers">{{ $client->id }}</div>
+                            <div class="numbers">{{ $client->id }}</div>
                         @endforeach
                         <div class="cardName">Clients</div>
                     </div>
@@ -175,9 +175,8 @@
 
                 <div class="card">
                     <div>
-                        @if ($categories->first())
-                        <div class="numbers">{{ $categories->first()->id }}</div>
-                    @endif
+                        <div class="numbers">50</div>
+
                         <div class="cardName">Categories</div>
                     </div>
 
@@ -223,19 +222,23 @@
                                     </td>
                                     <td class="p-3 px-5">
                                         <div style="display: flex; align-items: center;">
-                                            <select class="bg-transparent" style="margin-right: 10px;">
-                                                @foreach ($roles as $role)
-                                                    <option value="{{ $role->id }}"
-                                                        @if ($client->role_id == $role->id) selected @endif>
+                                            <form action="{{ route('clients.updateRole', $client->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <select name="role_id" class="bg-transparent" style="margin-right: 10px;">
+                                                    @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }}" @if(optional($client->role)->id == $role->id) selected @endif>
                                                         {{ $role->name }}
                                                     </option>
-                                                @endforeach
-                                            </select>
-                                            <div>
-                                                <button type="submit"
-                                                    class="text-sm save-button focus:outline-none focus:shadow-outline"
-                                                    style="background: #2a2185;color : #ffff;">Save</button>
-                                            </div>
+                                                    @endforeach
+                                                </select>
+                                            </form>
+                                                <div>
+                                                    <button type="submit"
+                                                        class="text-sm save-button focus:outline-none focus:shadow-outline"
+                                                        style="background: #2a2185; color: #ffff;">Save</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </td>
                                     <td class="p-3 px-5 flex justify-end">
