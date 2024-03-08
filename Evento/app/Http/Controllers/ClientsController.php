@@ -104,16 +104,16 @@ class ClientsController extends Controller
 
 
 }
-public function updateRole(Request $request, Client $client)
+public function updateRole(Request $request, $clientId)
 {
-    $validated = $request->validate([
-        'role_id' => 'required|exists:roles,id',
+    $request->validate([
+        'role_id' => 'required|exists:roles,id', 
     ]);
 
-    $client->role_id = $validated['role_id'];
+    $client = Client::findOrFail($clientId);
+    $client->role_id = $request->role_id;
     $client->save();
 
-    return redirect()->route('clients.index')->with('success', 'Client role updated successfully.');
+    return redirect()->back()->with('success', 'Le rôle du client a été mis à jour avec succès.');
 }
-
 }

@@ -233,13 +233,13 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                            </form>
                                                 <div>
                                                     <button type="submit"
-                                                        class="text-sm save-button focus:outline-none focus:shadow-outline"
-                                                        style="background: #2a2185; color: #ffff;">Save</button>
+                                                            class="text-sm save-button focus:outline-none focus:shadow-outline"
+                                                            style="background: #2a2185; color: #ffff;">Save</button>
                                                 </div>
                                             </form>
+                                            
                                         </div>
                                     </td>
                                     <td class="p-3 px-5 flex justify-end">
