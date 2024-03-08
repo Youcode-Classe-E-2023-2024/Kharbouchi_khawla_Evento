@@ -41,14 +41,13 @@ class ClientsController extends Controller
             'password' => 'required|string|min:6',
         ]);
         
-        // Récupérer l'ID du rôle "client"
         $clientRoleId = Role::where('name', 'client')->first()->id;
     
         Client::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
-            'role_id' => $clientRoleId, // Associer le rôle "client" par défaut
+            'role_id' => $clientRoleId, 
         ]);
     
         return redirect()->route('client.store')->with('success', 'Account successfully created!');

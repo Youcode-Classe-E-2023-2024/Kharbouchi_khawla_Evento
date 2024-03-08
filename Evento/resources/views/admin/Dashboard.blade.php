@@ -226,10 +226,11 @@
                                                 @csrf
                                                 @method('PATCH')
                                                 <select name="role_id" class="bg-transparent" style="margin-right: 10px;">
+                                                    <option value="">Sélectionnez un rôle</option>
                                                     @foreach ($roles as $role)
-                                                    <option value="{{ $role->id }}" @if(optional($client->role)->id == $role->id) selected @endif>
-                                                        {{ $role->name }}
-                                                    </option>
+                                                        <option value="{{ $role->id }}" @if(optional($client->role)->id == $role->id) selected @endif>
+                                                            {{ $role->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </form>
