@@ -14,7 +14,7 @@ class EventController extends Controller
         $events = Event::with('validity')->get();
         
         // Pass the events to the view
-        return view('events.index', compact('events'));
+        return view('admin.event', compact('events'));
     }
     
     public function store(Request $request)

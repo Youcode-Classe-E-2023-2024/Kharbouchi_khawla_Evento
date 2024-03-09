@@ -233,7 +233,7 @@
     <div class="inputs-container" style="display: flex;flex-direction: column;gap:5px;">
         <input type="text" name="category_name" value="{{ $event->category_name }}">
         <input type="number" name="price" value="{{ $event->price }}" />
-        <h3 style="color: #fff">{{ $event->locgation }}</h3>
+        <h3 style="color: #fff">{{ $event->location }}</h3>
         <input type="number" name="places" value="{{ $event->places }}">
     </div>
 </div>
