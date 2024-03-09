@@ -8,20 +8,10 @@ use App\Models\Validity;
 
 class EventController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $searchTerm = $request->query('search');
-    
-        if (!empty($searchTerm)) {
-            // Filter events by title if search term is provided
-            $events = Event::with('validity')
-                ->where('title', 'like', '%' . $searchTerm . '%')
-                ->get();
-        } else {
-            // No search term provided, fetch all events
-            $events = Event::with('validity')->get();
-        }
-    
+        
+        $events = Event::with('validity')->get();
         return view('admin.event', compact('events'));
     }
     
