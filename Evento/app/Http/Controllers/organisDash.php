@@ -13,9 +13,11 @@ class organisDash extends Controller
     }
     public function showDashboard()
     {
+
         $events = Event::all();
         $categories = Category::all();
         return view('organisateur.dashorganis', compact('events', 'categories'));
     }
+    
     
 }

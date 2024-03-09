@@ -208,8 +208,11 @@
                                 <p>{{ $event->location }}</p>
                             </div>
                             <div class="button-wrapper">
-                                <button class="btn outline"
-                                    >DELETE</button>
+                                <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn outline">DELETE</button>
+                                </form>
                                 <button class="btn fill" data-event-id="{{ $event->id }}" onclick="document.getElementById('demo-modal1').showModal();">MODIFIER</button>
                             </div>
                         </div>
@@ -224,6 +227,7 @@
     <!-- =========== Modal de Details =========  -->
     <dialog id="demo-modal1"
     style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;transform: translate(-50%, -50%);">
+
     <button onclick="document.getElementById('demo-modal1').close();">x</button>
     <h1 style="text-align: center;">{{ $event->title }}</h1>
     <div style=" display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 20px;">
@@ -238,7 +242,8 @@
     </div>
 </div>
     <textarea  placeholder="" name="description" id="" cols="30" rows="10"  style="background-color: #eee;border: none;padding: 12px 15px;margin: 8px 0;width: 100%;">{{ $event->description }}</textarea>
-    <button class="btn fill">MODIFIER</button>
+    <button type="submit" class="btn fill">MODIFIER</button>
+
 </dialog>
 
     <!-- =========== Modal de Add =========  -->

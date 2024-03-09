@@ -39,7 +39,6 @@
                     @if(Auth::check() && Auth::user()->isAdmin())
                     <div class="block relative">
                         <a href="/dashboard"><button type="button" class="inline-block py-2 px-3 hover:bg-white rounded-full relative ">
-                           
                             <div class="flex items-center h-5">
                                 
                                 <div class="_xpkakx">

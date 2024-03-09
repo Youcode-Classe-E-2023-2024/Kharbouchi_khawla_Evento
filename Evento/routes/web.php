@@ -14,8 +14,6 @@ use App\Http\Controllers\EventController;
 
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,9 +32,10 @@ Route::get('/event', function () {
 });
 Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 Route::get('/event', [EventController::class, 'showEvents']);
+
 // validation des events //
 Route::post('/events/validate/{event}', [EventController::class, 'validateEvent'])->name('event.validate');
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
 
 // Authentification //
 Route::get('/login', function () {return view('Auth.login');})->name('login');
@@ -82,9 +81,16 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+
+
 });
 Route::middleware(['checkrole:organisateur'])->group(function () {
-    Route::post('/events', [EventController::class, 'store'])->name('events.store');
-    Route::get('/organisateur', [organisDash::class, 'showDashboard'])->name('dashboard.show');
+
+    Route::get('/organisdash', [organisDash::class, 'showDashboard'])->name('dashboard.show');
     Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
 });
+
+// Events //
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');

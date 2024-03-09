@@ -10,10 +10,8 @@ class EventController extends Controller
 {
     public function index()
     {
-        // Retrieve all events with their 'validity' relationship
-        $events = Event::with('validity')->get();
         
-        // Pass the events to the view
+        $events = Event::with('validity')->get();
         return view('admin.event', compact('events'));
     }
     
@@ -61,5 +59,27 @@ class EventController extends Controller
     );
 
     return redirect()->back()->with('success', 'Event validation status updated successfully.');
+}
+
+
+public function destroy($id)
+{
+    $event = Event::findOrFail($id);
+    $event->delete();
+
+    return redirect()->route('events.index')->with('success', 'Event deleted successfully');
+}
+public function update(Request $request, $id)
+{
+    $event = Event::findOrFail($id);
+    $event->title = $request->title;
+    $event->category_name = $request->category_name;
+    $event->price = $request->price;
+    $event->location = $request->location; 
+    $event->places = $request->places;
+    $event->description = $request->description;
+    $event->save();
+
+    return redirect()->route('events.index')->with('success', 'Event updated successfully');
 }
 }

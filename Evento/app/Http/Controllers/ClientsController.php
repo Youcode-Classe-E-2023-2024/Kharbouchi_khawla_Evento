@@ -102,7 +102,7 @@ class ClientsController extends Controller
 
         // Vérifiez maintenant le rôle de l'utilisateur et redirigez en conséquence
         if ($user->role->name === 'organisateur') {
-            return redirect('/organisateur');
+            return redirect('/organisdash');
         }
         elseif ($user->role->name === 'admin') {
             return redirect('/dashboard');
