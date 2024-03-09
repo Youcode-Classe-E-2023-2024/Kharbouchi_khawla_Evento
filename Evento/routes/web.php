@@ -34,7 +34,7 @@ Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('cli
 Route::get('/event', [EventController::class, 'showEvents']);
 
 // validation des events //
-Route::post('/events/validate/{event}', [EventController::class, 'validateEvent'])->name('event.validate');
+Route::post('/events/validate/{id}', [EventController::class, 'validateEvent'])->name('event.validate');
 
 
 // Authentification //

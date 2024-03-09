@@ -95,7 +95,6 @@
         }
     </style>
     <style>
-        
         @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
@@ -174,7 +173,7 @@
         }
 
         .outline {
-            background:rgba(245, 50, 40, 0.9) ;
+            background: rgba(245, 50, 40, 0.9);
             color: rgba(245, 251, 253, 0.9);
             border: 1px solid rgba(0, 212, 255, 0.6);
             transition: all .3s ease;
@@ -309,12 +308,14 @@
                                                 onclick="document.getElementById('demo-modal').showModal();" /></td>
                                         <td style="text-align: center;">{{ $event->title }}</td>
                                         <td style="text-align: center;">{{ $event->location }}</td>
-                                        <td style="text-align: center;">             @if(optional($event->validity)->valid) <!-- Use optional() to avoid errors if $event->validity is null -->
-                                            <button style="background-color: green; color: white;">Validé</button>
-                                        @else
-                                            <button style="background-color: red; color: white;">Non validé</button>
-                                        @endif
-                            
+                                        <td style="text-align: center;">
+                                            @if (optional($event->validity)->valid)
+                                                <!-- Use optional() to avoid errors if $event->validity is null -->
+                                                <button style="background-color: green; color: white;">Validé</button>
+                                            @else
+                                                <button style="background-color: red; color: white;">Non validé</button>
+                                            @endif
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -340,8 +341,8 @@
                     </div>
                 </div>
                 <div style="width: 95%">
-                <span style="color: #fff">
-                    {{ $event->description }}</span>
+                    <span style="color: #fff">
+                        {{ $event->description }}</span>
                 </div>
                 <div style="display: flex;flex-direction: row; margin: 20px;">
                     <form method="POST" action="{{ route('event.validate', $event->id) }}">
@@ -352,24 +353,25 @@
                             <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
                         </div>
                     </form>
-            </div>
+                </div>
             </dialog>
+
+            
             <script>
                 function openModal(eventId) {
-                    // Example: Fetch event details stored in data attributes or perform an AJAX call to get the details
                     var eventTitle = document.querySelector(`#event-${eventId} .event-title`).innerText;
                     var eventImage = document.querySelector(`#event-${eventId} .event-image`).src;
                     // Add more details as needed
-                
+
                     // Populate the modal
                     document.querySelector('#demo-modal .modal-title').innerText = eventTitle;
                     document.querySelector('#demo-modal .modal-image').src = eventImage;
                     // Populate more details similarly
-                
+
                     // Open the modal
                     document.getElementById('demo-modal').showModal();
                 }
-                </script>
+            </script>
 
 
         </div>

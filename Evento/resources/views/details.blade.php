@@ -100,13 +100,12 @@
 
             <div class="relative">
                 <a href="#">
-                    <img class="w-full border rounded-xl"
-                        src="{{ asset('storage/images/' . $event->image) }}"
+                    <img class="w-full border rounded-xl" src="{{ asset('storage/images/' . $event->image) }}"
                         alt="Sunset in the mountains">
                 </a>
 
             </div>
-            
+
             <p class="text-gray-700 py-5 text-base leading-8">
                 {{ $event->description }}
             </p>
@@ -116,15 +115,13 @@
             <h3> Le prix : {{ $event->price }}DH</h3>
 
             @php
-use Carbon\Carbon;
+                use Carbon\Carbon;
+                $eventDate = Carbon::parse($event->event_date);
+                $now = Carbon::now();
+                $diff = $eventDate->diffForHumans($now, true, true);
+            @endphp
 
-// Supposons que $event->event_date soit la date de votre événement
-$eventDate = Carbon::parse($event->event_date);
-$now = Carbon::now();
 
-// Calculez la différence
-$diff = $eventDate->diffForHumans($now, true, true); // true pour un format court, true pour l'absence de modifications
-@endphp
             <div class="py-5 text-sm font-regular text-gray-900 flex">
                 <span class="mr-3 flex flex-row items-center">
                     <svg class="text-indigo-600" fill="currentColor" height="13px" width="13px" version="1.1"
@@ -139,12 +136,14 @@ $diff = $eventDate->diffForHumans($now, true, true); // true pour un format cour
                             </g>
                         </g>
                     </svg>
-                    <span class="ml-1">@if($eventDate->isPast())
-                        <span>L'événement est terminé.</span>
-                    @else
-                        <span>Temps restant : {{ $diff }}</span>
-                    @endif</span></span>
-                
+                    <span class="ml-1">
+                        @if ($eventDate->isPast())
+                            <span>L'événement est terminé.</span>
+                        @else
+                            <span>Temps restant : {{ $diff }}</span>
+                        @endif
+                    </span></span>
+
             </div>
             <hr>
             <div class="flex justify-end mt-3">
@@ -156,16 +155,47 @@ $diff = $eventDate->diffForHumans($now, true, true); // true pour un format cour
                 </button>
             </div>
             <dialog id="demo-modal"
-                style="border:2px solid rgb(211, 68, 82); ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:50%; width:70%; align-items: center; justify-content: center;">
-                               <button onclick="document.getElementById('demo-modal').close();"
+                style="border:2px solid rgb(211, 68, 82); ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:auto; width:50%; align-items: center; justify-content: center;">
+               
+                <div class="bg-white rounded-lg shadow-lg p-6" style="height: auto;">
+                    <button onclick="document.getElementById('demo-modal').close();"
                     style="margin-top:10px; margin-bottom:15px;margin-left:20px; background-color: rgb(211, 68, 82); color: white; 
                 padding: 10px 20px;
                 border: none; 
                 border-radius: 5px;
                 cursor: pointer; 
                 transition: background-color 0.3s;">
-                    Fermer
+                    X
+                    
                 </button>
+                <h2 class="text-lg font-medium mb-6">Payment Information</h2>
+                <form>
+                    <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" name="email"  placeholder="Email" class="w-full mb-4 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+                    <div class="grid grid-cols-2 gap-6">
+
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                            <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="expiration-date" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
+                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
+                            <input type="text" name="cvv" id="cvv" placeholder="000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="card-holder" class="block text-sm font-medium text-gray-700 mb-2">Card Holder</label>
+                            <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-green-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none">Submit</button>
+                    </div>
+                </form>
+                </div>
             </dialog>
 
 
