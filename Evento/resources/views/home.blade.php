@@ -7,11 +7,72 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Evento</title>
+    <style>
+        .search {
+            box-shadow: 0px 0px 20px 1px #ffffff;
+            border: 0;
+            border-radius: 30px 0 0 30px;
+            padding: 0 10px 0 10px;
+            text-align: center;
+            color: black;
+            height: 50px;
+            width: 500px;
+            font-size: 25px;
+            font-weight: 1000;
+        }
+
+        .search::selection {
+            background-color: red;
+            color: white;
+        }
+
+        .search:focus {
+            border: 0;
+            outline: 0;
+        }
+
+        .search:hover {
+            cursor: text;
+        }
+
+
+
+
+
+        .search-btn {
+            transition: 0.2s ease-in-out;
+            box-shadow: 0px 0px 20px 1px greenyellow;
+            border: 0;
+            border-radius: 0 30px 30px 0;
+            padding: 0 10px 0 10px;
+            text-align: center;
+            color: black;
+            position: relative;
+            background-color: greenyellow;
+            height: 50px;
+            width: 100px;
+            font-size: 25px;
+            font-weight: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            transition: 0.2s ease-in-out;
+            background-color: green;
+            box-shadow: 0px 0px 20px 1px green;
+            font-size: 30px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class=" w-full flex relative justify-between items-center mx-auto px-8 h-20" style="background-color: rgb(211, 68, 82);">
+    <nav class=" w-full flex relative justify-between items-center mx-auto px-8 h-20"
+        style="background-color: rgb(211, 68, 82);">
         <!-- logo -->
         <div class="inline-flex">
             <a class="_o6689fn" href="/">
@@ -36,49 +97,50 @@
         <div class="flex-initial">
             <div class="flex justify-end items-center relative">
                 <div class="flex mr-4 items-center">
-                    @if(Auth::check() && Auth::user()->isAdmin())
-                    <div class="block relative">
-                        <a href="/dashboard"><button type="button" class="inline-block py-2 px-3 hover:bg-white rounded-full relative ">
-                            <div class="flex items-center h-5">
-                                
-                                <div class="_xpkakx">
-                                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                        role="presentation" focusable="false"
-                                        style="display: block; height: 16px; width: 16px; fill: currentcolor;">
-                                        <path
-                                            d="m8.002.25a7.77 7.77 0 0 1 7.748 7.776 7.75 7.75 0 0 1 -7.521 7.72l-.246.004a7.75 7.75 0 0 1 -7.73-7.513l-.003-.245a7.75 7.75 0 0 1 7.752-7.742zm1.949 8.5h-3.903c.155 2.897 1.176 5.343 1.886 5.493l.068.007c.68-.002 1.72-2.365 1.932-5.23zm4.255 0h-2.752c-.091 1.96-.53 3.783-1.188 5.076a6.257 6.257 0 0 0 3.905-4.829zm-9.661 0h-2.75a6.257 6.257 0 0 0 3.934 5.075c-.615-1.208-1.036-2.875-1.162-4.686l-.022-.39zm1.188-6.576-.115.046a6.257 6.257 0 0 0 -3.823 5.03h2.75c.085-1.83.471-3.54 1.059-4.81zm2.262-.424c-.702.002-1.784 2.512-1.947 5.5h3.904c-.156-2.903-1.178-5.343-1.892-5.494l-.065-.007zm2.28.432.023.05c.643 1.288 1.069 3.084 1.157 5.018h2.748a6.275 6.275 0 0 0 -3.929-5.068z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                
-                            </div>
-                            
-                        </button></a>
-                        @endif
-                    </div>
-                </div>
+                    @if (Auth::check() && Auth::user()->isAdmin())
+                        <div class="block relative">
+                            <a href="/dashboard"><button type="button"
+                                    class="inline-block py-2 px-3 hover:bg-white rounded-full relative ">
+                                    <div class="flex items-center h-5">
 
-                <div class="block">
-                    <div class="inline relative">
-                        <button type="button"
-                            class="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg">
-                            <div class="pl-1">
-                                <h3>Lougout</h3>
-                            </div>
+                                        <div class="_xpkakx">
+                                            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                                                aria-hidden="true" role="presentation" focusable="false"
+                                                style="display: block; height: 16px; width: 16px; fill: currentcolor;">
+                                                <path
+                                                    d="m8.002.25a7.77 7.77 0 0 1 7.748 7.776 7.75 7.75 0 0 1 -7.521 7.72l-.246.004a7.75 7.75 0 0 1 -7.73-7.513l-.003-.245a7.75 7.75 0 0 1 7.752-7.742zm1.949 8.5h-3.903c.155 2.897 1.176 5.343 1.886 5.493l.068.007c.68-.002 1.72-2.365 1.932-5.23zm4.255 0h-2.752c-.091 1.96-.53 3.783-1.188 5.076a6.257 6.257 0 0 0 3.905-4.829zm-9.661 0h-2.75a6.257 6.257 0 0 0 3.934 5.075c-.615-1.208-1.036-2.875-1.162-4.686l-.022-.39zm1.188-6.576-.115.046a6.257 6.257 0 0 0 -3.823 5.03h2.75c.085-1.83.471-3.54 1.059-4.81zm2.262-.424c-.702.002-1.784 2.512-1.947 5.5h3.904c-.156-2.903-1.178-5.343-1.892-5.494l-.065-.007zm2.28.432.023.05c.643 1.288 1.069 3.084 1.157 5.018h2.748a6.275 6.275 0 0 0 -3.929-5.068z">
+                                                </path>
+                                            </svg>
+                                        </div>
 
-                            <div class="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-5">
-                                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                    role="presentation" focusable="false"
-                                    style="display: block; height: 100%; width: 100%; fill: currentcolor;">
-                                    <path
-                                        d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z">
-                                    </path>
-                                </svg>
-                            </div>
-                        </button>
-                    </div>
+                                    </div>
+
+                                </button></a>
+                    @endif
                 </div>
             </div>
+
+            <div class="block">
+                <div class="inline relative">
+                    <button type="button"
+                        class="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg">
+                        <div class="pl-1">
+                            <h3>Lougout</h3>
+                        </div>
+
+                        <div class="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-5">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                role="presentation" focusable="false"
+                                style="display: block; height: 100%; width: 100%; fill: currentcolor;">
+                                <path
+                                    d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
         </div>
         <!-- end login -->
     </nav>
@@ -86,56 +148,52 @@
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://t3.ftcdn.net/jpg/04/38/18/48/360_F_438184846_1BzROkQWk4Ffwf5wHgtemCLhdmoSugYl.jpg) no-repeat center;background-size:cover"
         class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
         <h1 class="pb-4">Search for Events</h1>
-        <div class="w-11/12 md:w-3/4 lg:max-w-3xl m-auto">
-            <div class="relative z-30 text-base text-black"><input type="text" value="" placeholder="Keyword"
-                    class="mt-2 shadow-md focus:outline-none rounded-2xl py-3 px-6 block w-full">
-                <div
-                    class="text-left absolute top-10 rounded-t-none rounded-b-2xl shadow bg-white divide-y w-full max-h-40 overflow-auto">
-                </div>
-            </div>
+        <div class="flex w-11/12 md:w-3/4 lg:max-w-3xl m-auto">
+            <input ype="text" name="search" class="search" id="search-inp"  placeholder="Search...">
+
+            <button type="submit" class="search-btn" id="search-inp-btn">&#x027A4;</button>
         </div>
     </div>
     <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
         @foreach ($categories as $category)
-        <a href="#">
-            <span class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0" style="background-color: rgb(211, 68, 82);">
-                {{ $category->name }}
-            </span>
-        </a>
-    @endforeach
+            <a href="#">
+                <span
+                    class="inline-block bg-cyan-400 text-white font-normal rounded text-sm mt-2 px-2 py-1 sm:px-2 sm:font-medium sm:py-1 break-words mt-0"
+                    style="background-color: rgb(211, 68, 82);">
+                    {{ $category->name }}
+                </span>
+            </a>
+        @endforeach
 
     </div>
     <div class="container mx-auto mx-auto p-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             <!-- Replace this with your grid items -->
-            @foreach($events as $event)
-            <div class="rounded-lg border p-4" style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));">
-                <img src="{{ asset('storage/images/' . $event->image) }}" alt="Placeholder Image"
-                    class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
-                <div class="px-1 py-4">
-                    <div class="font-bold text-xl mb-2">{{ $event->title }}</div>
-                    <h3 class="text-gray-700 text-base">
-                        Lieu: {{ $event->location }}
-                    </h3>
+            @foreach ($events as $event)
+                <div class="rounded-lg border p-4"
+                    style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));">
+                    <img src="{{ asset('storage/images/' . $event->image) }}" alt="Placeholder Image"
+                        class="w-full h-48 rounded-md object-cover" style="border: 2px solid rgb(211, 68, 82);">
+                    <div class="px-1 py-4">
+                        <div class="font-bold text-xl mb-2">{{ $event->title }}</div>
+                        <h3 class="text-gray-700 text-base">
+                            Lieu: {{ $event->location }}
+                        </h3>
+                    </div>
+                    <div class="px-1 py-4">
+                        <a href="#" class="text-blue-500 hover:underline">Read More</a>
+                    </div>
                 </div>
-                <div class="px-1 py-4">
-                    <a href="#" class="text-blue-500 hover:underline">Read More</a>
-                </div>
-            </div>
             @endforeach
-
             <!-- Add more items as needed -->
-            <div class="flex justify-center mt-6">
-
-            </div>
 
         </div>
-
         <!-- Pagination controls centered -->
         <div class="flex justify-center mt-6">
             <div class="inline-flex items-center gap-1">
                 <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100  text-white rtl:rotate-180" style="background: rgb(211, 68, 82);">
+                    class="inline-flex items-center justify-center rounded border border-gray-100  text-white rtl:rotate-180"
+                    style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Prev Page</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -147,11 +205,11 @@
                     <label for="PaginationPage" class="sr-only">Page</label>
                     <input type="number" id="PaginationPage"
                         class="h-8 w-12 rounded border  bg-white p-0 text-center text-xs font-medium text-gray-900 [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                        style="border: 2px solid rgb(211, 68, 82);"
-                        min="1" value="2" />
+                        style="border: 2px solid rgb(211, 68, 82);" min="1" value="2" />
                 </div>
                 <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100 text-white" style="background: rgb(211, 68, 82);">
+                    class="inline-flex items-center justify-center rounded border border-gray-100 text-white"
+                    style="background: rgb(211, 68, 82);">
                     <span class="sr-only">Next Page</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -177,6 +235,141 @@
             </div>
         </div>
     </footer>
+
+<script>
+    document.querySelector(".search-btn").addEventListener("click", ()=>{
+
+search = document.querySelector(".search").value
+
+       if(search%2==0){ console.log("⚠️Warning: This search engine is not connected to the website ❗️")
+                        alert("⚠️  This search engine is not connected to the website ❗️") 
+       }
+       if(search%2===1){ console.log("⚠️Warning: This search engine is not connected to the website ❗")
+                         alert("⚠️  This search engine is not connected to the website ❗️") 
+       }
+
+
+
+
+
+//   +++ Qidiruv tarixiga qo'shilgan web saytlar +++
+
+
+
+
+
+// ===Qisqartirilmagan holat===
+
+      else if(search==='kun.uz'){ location = "https://kun.uz/"
+
+      }
+
+      else if(search==='youtube.com'){ location = "https://www.youtube.com/"
+
+      }
+
+      else if(search==='telegram.org'){ location = "https://web.telegram.org/a/"
+
+      }
+
+      else if(search==='canva.com'){ location = "https://canva.com/"
+
+      }
+
+      else if(search==='fontawesome.com'){ location = "https://fontawesome.com/"
+
+      }
+
+      else if(search==='discord.com'){ location = "https://discord.com/"
+
+      }
+
+      else if(search==='panzoid.com'){ location = "https://panzoid.com/"
+
+      }
+
+      else if(search==='upg.uz'){ location = "https://upg.uz/"
+
+      }
+
+      else if(search==='youtube.channel/TOMS LIDER'){ location = "https://www.youtube.com/@TOMS_LIDER"
+
+      }
+
+      else if(search==='live server'){ location = "http://127.0.0.1:5500/"
+
+      }
+
+// ===Finsh===
+
+
+
+
+
+
+
+// ---Qisqartirilgan holat---
+
+      else if(search==='kun'){ location = "https://kun.uz/"
+
+      }
+
+      else if(search==='yt'){ location = "https://www.youtube.com/"
+
+      }
+
+      else if(search==='tg'){ location = "https://web.telegram.org/a/"
+
+      }
+
+      else if(search==='cv'){ location = "https://canva.com/"
+
+      }
+
+      else if(search==='fa'){ location = "https://fontawesome.com/"
+
+      }
+
+      else if(search==='dd'){ location = "https://discord.com/"
+
+      }
+
+      else if(search==='pd'){ location = "https://panzoid.com/"
+
+      }
+
+      else if(search==='upg'){ location = "https://upg.uz/"
+
+      }
+
+      else if(search==='yt.TL'){ location = "https://www.youtube.com/@TOMS_LIDER"
+
+      }
+
+      else if(search==='ls'){ location = "http://127.0.0.1:5500/"
+
+      }
+
+// ---Finsh---
+
+
+
+
+
+// +++ Finsh all URL +++
+
+
+
+
+
+
+
+
+document.querySelector(".search").value = ""
+
+})
+
+</script>
 
 </body>
 
