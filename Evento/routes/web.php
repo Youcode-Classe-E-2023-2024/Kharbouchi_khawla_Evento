@@ -95,3 +95,9 @@ Route::middleware(['checkrole:organisateur'])->group(function () {
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+// web.php
+
+Route::get('/event/{id}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+
+

@@ -82,6 +82,9 @@ public function update(Request $request, $id)
 
     return redirect()->route('events.index')->with('success', 'Event updated successfully');
 }
-
-
+public function show($id)
+{
+    $event = Event::findOrFail($id); 
+    return view('details', compact('event'));
+}
 }

@@ -95,29 +95,36 @@
             <a href="#"
                 class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 custom-hover-color"
                 style="">
-                The Best Activewear from the Nordstrom Anniversary Sale
+                {{ $event->title }}
             </a>
 
             <div class="relative">
                 <a href="#">
                     <img class="w-full border rounded-xl"
-                        src="https://images.pexels.com/photos/5120892/pexels-photo-5120892.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=625.0&amp;sharp=10&amp;w=1500"
+                        src="{{ asset('storage/images/' . $event->image) }}"
                         alt="Sunset in the mountains">
                 </a>
 
             </div>
             
             <p class="text-gray-700 py-5 text-base leading-8">
-                Machu Picchu is a 15th-century Inca citadel situated on a mountain ridge 2,430 metres (7,970 ft) above
-                sea
-                level. It is located in the Cusco Region, Urubamba Province, Machupicchu District in Peru, above the
-                Sacred
-                Valley, which is 80 kilometres (50 mi) northwest of Cuzco and through which the Urubamba River flows.
+                {{ $event->description }}
             </p>
             <h4>
-                place disponible : 22 places
+                place disponible : {{ $event->places }} places
             </h4>
-            <h3> Le prix : 400DH</h3>
+            <h3> Le prix : {{ $event->price }}DH</h3>
+
+            @php
+use Carbon\Carbon;
+
+// Supposons que $event->event_date soit la date de votre événement
+$eventDate = Carbon::parse($event->event_date);
+$now = Carbon::now();
+
+// Calculez la différence
+$diff = $eventDate->diffForHumans($now, true, true); // true pour un format court, true pour l'absence de modifications
+@endphp
             <div class="py-5 text-sm font-regular text-gray-900 flex">
                 <span class="mr-3 flex flex-row items-center">
                     <svg class="text-indigo-600" fill="currentColor" height="13px" width="13px" version="1.1"
@@ -132,16 +139,12 @@
                             </g>
                         </g>
                     </svg>
-                    <span class="ml-1">6 mins ago</span></span>
-                <a href="#" class="flex flex-row items-center hover:text-indigo-600">
-                    <svg class="text-indigo-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
-                        focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor"
-                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-                        </path>
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                    </svg>
-                    <span class="ml-1">AliSher Azimi</span></a>
+                    <span class="ml-1">@if($eventDate->isPast())
+                        <span>L'événement est terminé.</span>
+                    @else
+                        <span>Temps restant : {{ $diff }}</span>
+                    @endif</span></span>
+                
             </div>
             <hr>
             <div class="flex justify-end mt-3">
@@ -154,38 +157,7 @@
             </div>
             <dialog id="demo-modal"
                 style="border:2px solid rgb(211, 68, 82); ; border-radius: 15px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); height:50%; width:70%; align-items: center; justify-content: center;">
-                {{-- <div class="container">
-                    <div class="card">
-                      <button class="proceed"><svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
-                  </svg></button>
-                     <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card">
-                   <label>Card number:</label>
-                   <input id="user" type="text" class="input cardnumber"  placeholder="1234 5678 9101 1121">
-                   <label>Name:</label>
-                   <input class="input name"  placeholder="Edgar Pérez">
-                   <label class="toleft">CCV:</label>
-                   <input class="input toleft ccv" placeholder="321">
-                    </div>
-                    <div class="receipt">
-                      <div class="col"><p>Cost:</p>
-                      <h2 class="cost">$400</h2><br>
-                      <p>Name:</p>
-                      <h2 class="seller">Codedgar</h2>
-                      </div>
-                      <div class="col">
-                        <p>Bought Items:</p>
-                        <h3 class="bought-items">Corsair Mouse</h3>
-                        <p class="bought-items description">Gaming mouse with shiny lights</p>
-                        <p class="bought-items price">$200 (50% discount)</p><br>
-                        <h3 class="bought-items">Gaming keyboard</h3>
-                        <p class="bought-items description">Look mommmy, it has colors!</p>
-                        <p class="bought-items price">$200 (50% discount)</p><br>
-                      </div>
-                      <p class="comprobe">This information will be sended to your email</p>
-                    </div>
-                  </div> --}}
-                <button onclick="document.getElementById('demo-modal').close();"
+                               <button onclick="document.getElementById('demo-modal').close();"
                     style="margin-top:10px; margin-bottom:15px;margin-left:20px; background-color: rgb(211, 68, 82); color: white; 
                 padding: 10px 20px;
                 border: none; 

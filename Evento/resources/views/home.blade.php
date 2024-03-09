@@ -181,7 +181,7 @@
                         </h3>
                     </div>
                     <div class="px-1 py-4">
-                        <a href="#" class="text-blue-500 hover:underline">Read More</a>
+                        <a href="{{ route('events.show', $event->id) }}" class="text-blue-500 hover:underline">Read More</a>
                     </div>
                 </div>
             @endforeach
