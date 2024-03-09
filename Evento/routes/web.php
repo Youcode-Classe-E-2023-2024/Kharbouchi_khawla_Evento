@@ -81,6 +81,7 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 
 });
@@ -92,5 +93,5 @@ Route::middleware(['checkrole:organisateur'])->group(function () {
 
 // Events //
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
