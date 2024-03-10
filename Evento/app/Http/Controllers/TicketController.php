@@ -13,6 +13,8 @@ class TicketController extends Controller
     'expiration_date' => $request->input('expiration_date'),
     'cvv' => $request->input('cvv'),
     'card_holder' => $request->input('card-holder'),
+    'id_client' => auth()->id(),
+    'id_event' => $request->input('id_event'),
 ]);
 dd("wssselt");
         return redirect()->back()->with('success', 'Ticket purchased successfully!');
