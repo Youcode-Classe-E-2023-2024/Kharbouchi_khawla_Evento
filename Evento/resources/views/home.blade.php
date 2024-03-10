@@ -21,7 +21,7 @@
                 <div class="hidden md:block">
                     <img src="assets/imgs/Evento_logo.png" alt="" style="width: 8%; height:4%;">
                 </div>
-               
+
             </a>
         </div>
         <!-- end logo -->
@@ -44,10 +44,9 @@
                                                 </path>
                                             </svg>
                                         </div>
-
                                     </div>
-
-                                </button></a>
+                                </button>
+                            </a>
                     @endif
                 </div>
             </div>
@@ -80,17 +79,18 @@
     </nav>
 
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://t3.ftcdn.net/jpg/04/38/18/48/360_F_438184846_1BzROkQWk4Ffwf5wHgtemCLhdmoSugYl.jpg) no-repeat center;background-size:cover"
-    class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto flex justify-center items-center" style="height: 100vh;">
-    <div>
-        <h1 class="pb-4">Search for Events</h1>
-        <div class="search" style="display: flex; justify-content: center; align-items: center;">
-            <label>
-                <input type="text" placeholder="Search here" style="margin-right: 8px;">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
+        class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto flex justify-center items-center"
+        style="height: 100vh;">
+        <div>
+            <h1 class="pb-4">Search for Events</h1>
+            <div class="search" style="display: flex; justify-content: center; align-items: center;">
+                <label>
+                    <input type="text" placeholder="Search here" style="margin-right: 8px;">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
         @foreach ($categories as $category)
@@ -128,35 +128,8 @@
 
         </div>
         <!-- Pagination controls centered -->
-        <div class="flex justify-center mt-6">
-            <div class="inline-flex items-center gap-1">
-                <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100  text-white rtl:rotate-180"
-                    style="background: rgb(211, 68, 82);">
-                    <span class="sr-only">Prev Page</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-                <div>
-                    <label for="PaginationPage" class="sr-only">Page</label>
-                    <input type="number" id="PaginationPage"
-                        class="h-8 w-12 rounded border  bg-white p-0 text-center text-xs font-medium text-gray-900 [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                        style="border: 2px solid rgb(211, 68, 82);" min="1" value="2" />
-                </div>
-                <a href="#"
-                    class="inline-flex items-center justify-center rounded border border-gray-100 text-white"
-                    style="background: rgb(211, 68, 82);">
-                    <span class="sr-only">Next Page</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
+        <div class="mt-4">
+            {{ $events->links() }}
         </div>
     </div>
     </div>

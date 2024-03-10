@@ -19,7 +19,8 @@ class HomeController extends Controller
         $events = Event::whereHas('validity', function($query) {
             $query->where('valid', true);
         })->get();
-    
+        $events = Event::paginate(3); // Récupère 10 événements par page
+       
         // Passage des événements valides et des catégories à la vue
         return view('home', ['categories' => $categories, 'events' => $events]);
     }
