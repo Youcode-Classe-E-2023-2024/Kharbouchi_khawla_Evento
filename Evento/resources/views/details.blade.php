@@ -53,13 +53,14 @@
         <!-- end login -->
     </nav>
 
-
-
     @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
     </div>
-@endif
+   @endif
+
+
     <div class="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
 
         <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
@@ -76,12 +77,7 @@
                 </a>
 
             </div>
-            @if(session('success'))
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-        <strong class="font-bold">Success!</strong>
-        <span class="block sm:inline">{{ session('success') }}</span>
-    </div>
-@endif
+ 
 
             <p class="text-gray-700 py-5 text-base leading-8">
                 {{ $event->description }}

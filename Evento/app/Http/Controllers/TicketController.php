@@ -16,8 +16,8 @@ class TicketController extends Controller
     'id_client' => auth()->id(),
     'id_event' => $request->input('id_event'),
 ]);
-dd("wssselt");
-        return redirect()->back()->with('success', 'Ticket purchased successfully!');
+
+        return redirect()->back()->with('success', 'Ticket acheté successfully!');
     }
     public function showTickets()
 {
