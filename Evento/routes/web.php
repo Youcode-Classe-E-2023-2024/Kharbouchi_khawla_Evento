@@ -99,6 +99,6 @@ Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
 Route::get('/event/{id}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
-Route::post('/submit-ticket', [TicketController::class, 'store'])->name('submit.ticket');
 
+Route::post('/purchase-ticket', [TicketController::class, 'store'])->name('purchase-ticket');
 

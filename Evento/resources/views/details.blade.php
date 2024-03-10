@@ -87,6 +87,12 @@
                 </a>
 
             </div>
+            @if(session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+@endif
 
             <p class="text-gray-700 py-5 text-base leading-8">
                 {{ $event->description }}
@@ -151,10 +157,8 @@
                     
                 </button>
                 <h2 class="text-lg font-medium mb-6">Payment Information</h2>
-                <form action="{{ route('submit.ticket') }}" method="POST">
+                <form action="{{ route('purchase-ticket') }}" method="POST">
                     @csrf
-                    <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" name="email"  placeholder="Email" class="w-full mb-4 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
                     <div class="grid grid-cols-2 gap-6">
 
                         <div class="col-span-2 sm:col-span-1">

@@ -6,67 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Evento</title>
-    <style>
-        .search {
-            box-shadow: 0px 0px 20px 1px #ffffff;
-            border: 0;
-            border-radius: 30px 0 0 30px;
-            padding: 0 10px 0 10px;
-            text-align: center;
-            color: black;
-            height: 50px;
-            width: 500px;
-            font-size: 25px;
-            font-weight: 1000;
-        }
 
-        .search::selection {
-            background-color: red;
-            color: white;
-        }
-
-        .search:focus {
-            border: 0;
-            outline: 0;
-        }
-
-        .search:hover {
-            cursor: text;
-        }
-
-
-
-
-
-        .search-btn {
-            transition: 0.2s ease-in-out;
-            box-shadow: 0px 0px 20px 1px greenyellow;
-            border: 0;
-            border-radius: 0 30px 30px 0;
-            padding: 0 10px 0 10px;
-            text-align: center;
-            color: black;
-            position: relative;
-            background-color: greenyellow;
-            height: 50px;
-            width: 100px;
-            font-size: 25px;
-            font-weight: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-btn:hover {
-            transition: 0.2s ease-in-out;
-            background-color: green;
-            box-shadow: 0px 0px 20px 1px green;
-            font-size: 30px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -148,10 +90,11 @@
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://t3.ftcdn.net/jpg/04/38/18/48/360_F_438184846_1BzROkQWk4Ffwf5wHgtemCLhdmoSugYl.jpg) no-repeat center;background-size:cover"
         class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
         <h1 class="pb-4">Search for Events</h1>
-        <div class="flex w-11/12 md:w-3/4 lg:max-w-3xl m-auto">
-            <input ype="text" name="search" class="search" id="search-inp"  placeholder="Search...">
-
-            <button type="submit" class="search-btn" id="search-inp-btn">&#x027A4;</button>
+        <div class="search">
+            <label>
+                <input type="text" placeholder="Search here">
+                <ion-icon name="search-outline"></ion-icon>
+            </label>
         </div>
     </div>
     <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
@@ -181,7 +124,8 @@
                         </h3>
                     </div>
                     <div class="px-1 py-4">
-                        <a href="{{ route('events.show', $event->id) }}" class="text-blue-500 hover:underline">Read More</a>
+                        <a href="{{ route('events.show', $event->id) }}" class="text-blue-500 hover:underline">Read
+                            More</a>
                     </div>
                 </div>
             @endforeach
@@ -236,140 +180,7 @@
         </div>
     </footer>
 
-<script>
-    document.querySelector(".search-btn").addEventListener("click", ()=>{
 
-search = document.querySelector(".search").value
-
-       if(search%2==0){ console.log("⚠️Warning: This search engine is not connected to the website ❗️")
-                        alert("⚠️  This search engine is not connected to the website ❗️") 
-       }
-       if(search%2===1){ console.log("⚠️Warning: This search engine is not connected to the website ❗")
-                         alert("⚠️  This search engine is not connected to the website ❗️") 
-       }
-
-
-
-
-
-//   +++ Qidiruv tarixiga qo'shilgan web saytlar +++
-
-
-
-
-
-// ===Qisqartirilmagan holat===
-
-      else if(search==='kun.uz'){ location = "https://kun.uz/"
-
-      }
-
-      else if(search==='youtube.com'){ location = "https://www.youtube.com/"
-
-      }
-
-      else if(search==='telegram.org'){ location = "https://web.telegram.org/a/"
-
-      }
-
-      else if(search==='canva.com'){ location = "https://canva.com/"
-
-      }
-
-      else if(search==='fontawesome.com'){ location = "https://fontawesome.com/"
-
-      }
-
-      else if(search==='discord.com'){ location = "https://discord.com/"
-
-      }
-
-      else if(search==='panzoid.com'){ location = "https://panzoid.com/"
-
-      }
-
-      else if(search==='upg.uz'){ location = "https://upg.uz/"
-
-      }
-
-      else if(search==='youtube.channel/TOMS LIDER'){ location = "https://www.youtube.com/@TOMS_LIDER"
-
-      }
-
-      else if(search==='live server'){ location = "http://127.0.0.1:5500/"
-
-      }
-
-// ===Finsh===
-
-
-
-
-
-
-
-// ---Qisqartirilgan holat---
-
-      else if(search==='kun'){ location = "https://kun.uz/"
-
-      }
-
-      else if(search==='yt'){ location = "https://www.youtube.com/"
-
-      }
-
-      else if(search==='tg'){ location = "https://web.telegram.org/a/"
-
-      }
-
-      else if(search==='cv'){ location = "https://canva.com/"
-
-      }
-
-      else if(search==='fa'){ location = "https://fontawesome.com/"
-
-      }
-
-      else if(search==='dd'){ location = "https://discord.com/"
-
-      }
-
-      else if(search==='pd'){ location = "https://panzoid.com/"
-
-      }
-
-      else if(search==='upg'){ location = "https://upg.uz/"
-
-      }
-
-      else if(search==='yt.TL'){ location = "https://www.youtube.com/@TOMS_LIDER"
-
-      }
-
-      else if(search==='ls'){ location = "http://127.0.0.1:5500/"
-
-      }
-
-// ---Finsh---
-
-
-
-
-
-// +++ Finsh all URL +++
-
-
-
-
-
-
-
-
-document.querySelector(".search").value = ""
-
-})
-
-</script>
 
 </body>
 
