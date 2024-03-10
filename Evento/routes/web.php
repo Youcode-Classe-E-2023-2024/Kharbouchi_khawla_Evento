@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketValidationController;
 
 
 
@@ -106,3 +107,6 @@ Route::post('/purchase-ticket', [TicketController::class, 'store'])->name('purch
 Route::get('/ticket', 'App\Http\Controllers\TicketController@showTickets');
 
 Route::post('/logout', [ClientsController::class, 'logout'])->name('logout');
+
+
+Route::post('/validate-ticket', [TicketValidationController::class, 'validateTicket'])->name('validate.ticket');

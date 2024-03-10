@@ -304,12 +304,12 @@
                                         <td style="text-align: center;">{{ $ticket->card_holder }}</td>
                                         <td style="text-align: center;">{{ $ticket->created_at->format('Y-m-d') }}</td>
                                         <td style="text-align: center;">
-                                            {{-- @if (optional($event->validity)->valid) --}}
+                                            @if (optional($ticket->validity)->valid)
                                             <!-- Use optional() to avoid errors if $event->validity is null -->
                                             <button style="background-color: green; color: white;">Validé</button>
-                                            {{-- @else --}}
+                                            @else
                                             <button style="background-color: red; color: white;">Non validé</button>
-                                            {{-- @endif --}}
+                                            @endif
 
                                     </tr>
                                 @endforeach
@@ -331,11 +331,15 @@
                     </div>
                 </div>
                 <div style="display: flex;flex-direction: row; margin: 20px;">
-
+                    <form action="{{ route('validate.ticket') }}" method="POST">
+                        <!-- Include CSRF token -->
+                        @csrf
+                        <input type="hidden" name="id_ticket" value="{{ $ticket->id }}">
                     <div style="display: flex; flex-direction: row; margin: 20px;">
                         <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
                         <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
                     </div>
+                </form>
                 </div>
             </dialog>
 
