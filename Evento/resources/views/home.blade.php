@@ -51,10 +51,12 @@
                     @endif
                 </div>
             </div>
-
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             <div class="block">
                 <div class="inline relative">
-                    <button type="button"
+                    <button type="button" onclick="document.getElementById('logout-form').submit();"
                         class="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg">
                         <div class="pl-1">
                             <h3>Lougout</h3>
@@ -78,15 +80,18 @@
     </nav>
 
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://t3.ftcdn.net/jpg/04/38/18/48/360_F_438184846_1BzROkQWk4Ffwf5wHgtemCLhdmoSugYl.jpg) no-repeat center;background-size:cover"
-        class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
+    class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto flex justify-center items-center" style="height: 100vh;">
+    <div>
         <h1 class="pb-4">Search for Events</h1>
-        <div class="search">
+        <div class="search" style="display: flex; justify-content: center; align-items: center;">
             <label>
-                <input type="text" placeholder="Search here">
+                <input type="text" placeholder="Search here" style="margin-right: 8px;">
                 <ion-icon name="search-outline"></ion-icon>
             </label>
         </div>
     </div>
+</div>
+
     <div class="flex flex-wrap gap-1 mt-6 mb-6 md:gap-2 justify-center items-center ">
         @foreach ($categories as $category)
             <a href="#">

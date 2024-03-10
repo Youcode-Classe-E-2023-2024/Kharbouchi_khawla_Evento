@@ -126,4 +126,13 @@ public function updateRole(Request $request, $clientId)
 
     return redirect()->back()->with('success', 'Le rôle du client a été mis à jour avec succès.');
 }
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
 }

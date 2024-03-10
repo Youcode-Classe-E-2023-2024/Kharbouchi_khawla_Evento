@@ -104,3 +104,4 @@ Route::post('/purchase-ticket', [TicketController::class, 'store'])->name('purch
 
 
 
+Route::post('/logout', [ClientsController::class, 'logout'])->name('logout');
