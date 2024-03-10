@@ -296,7 +296,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($tickets as $ticket)
-                                    <tr >
+                                    <tr>
                                         <td style="text-align: center;"
                                             onclick="document.getElementById('demo-modal').showModal();">
                                             <h3>{{ $ticket->id }}<h3>
@@ -304,13 +304,11 @@
                                         <td style="text-align: center;">{{ $ticket->card_holder }}</td>
                                         <td style="text-align: center;">{{ $ticket->created_at->format('Y-m-d') }}</td>
                                         <td style="text-align: center;">
-                                            @if (optional($ticket->validity)->valid)
-                                            <!-- Use optional() to avoid errors if $event->validity is null -->
-                                            <button style="background-color: green; color: white;">Validé</button>
+                                            @if ($ticket->true)
+                                                <button style="background-color: green; color: white;">Validé</button>
                                             @else
-                                            <button style="background-color: red; color: white;">Non validé</button>
+                                                <button style="background-color: red; color: white;">Non validé</button>
                                             @endif
-
                                     </tr>
                                 @endforeach
 
@@ -335,16 +333,13 @@
                         <!-- Include CSRF token -->
                         @csrf
                         <input type="hidden" name="id_ticket" value="{{ $ticket->id }}">
-                    <div style="display: flex; flex-direction: row; margin: 20px;">
-                        <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
-                        <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
-                    </div>
-                </form>
+                        <div style="display: flex; flex-direction: row; margin: 20px;">
+                            <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
+                            <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
+                        </div>
+                    </form>
                 </div>
             </dialog>
-
-
-
         </div>
     </div>
 
