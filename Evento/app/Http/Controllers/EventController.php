@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\Validity;
-
+use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     public function index()
@@ -87,4 +87,5 @@ public function show($id)
     $event = Event::findOrFail($id); 
     return view('details', compact('event'));
 }
+
 }

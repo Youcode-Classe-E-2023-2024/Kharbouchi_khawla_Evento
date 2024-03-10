@@ -206,7 +206,7 @@
                         Event</button>
                 </div>
                 <div class="ana">
-                    @foreach($events as $event)
+                    @forelse($events as $event)
                         <div class="containe">
                             <div class="wrapper">
                                 <div class="banner-image">
@@ -224,7 +224,9 @@
                                 <button class="btn fill" data-event-id="{{ $event->id }}" onclick="document.getElementById('demo-modal1').showModal();">MODIFIER</button>
                             </div>
                         </div>
-                    @endforeach
+                        @empty
+                        <p>You have no events.</p>
+                    @endforelse
 
                 </div>
             </div>

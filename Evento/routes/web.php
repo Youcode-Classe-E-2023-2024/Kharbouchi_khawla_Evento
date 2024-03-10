@@ -102,3 +102,5 @@ Route::get('/event/{id}', [App\Http\Controllers\EventController::class, 'show'])
 
 Route::post('/purchase-ticket', [TicketController::class, 'store'])->name('purchase-ticket');
 
+
+

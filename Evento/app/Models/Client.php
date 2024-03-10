@@ -19,4 +19,5 @@ class Client extends Authenticatable
     {
         return $this->role_id === 3;
     }
+    
 }
