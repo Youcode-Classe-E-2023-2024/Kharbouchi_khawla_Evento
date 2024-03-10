@@ -206,7 +206,7 @@
                         Event</button>
                 </div>
                 <div class="ana">
-                    
+                    @foreach($events as $event)
                         <div class="containe">
                             <div class="wrapper">
                                 <div class="banner-image">
