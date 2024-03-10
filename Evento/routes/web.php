@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\TicketController;
 
 
 
@@ -86,7 +86,9 @@ Route::middleware(['checkrole:admin'])->group(function () {
 
 });
 Route::middleware(['checkrole:organisateur'])->group(function () {
-
+    Route::get('/ticket', function () {
+        return view('organisateur.Ticket');
+    });
     Route::get('/organisdash', [organisDash::class, 'showDashboard'])->name('dashboard.show');
     Route::get('/organisateur', [organisDash::class, 'index'])->name('organisDash');
 });
@@ -96,8 +98,7 @@ Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
-// web.php
-
 Route::get('/event/{id}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+Route::post('/submit-ticket', [TicketController::class, 'store'])->name('submit.ticket');
 
 

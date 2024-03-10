@@ -140,7 +140,14 @@
                         <span class="title">Evento</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="/ticket">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Ticket</span>
+                    </a>
+                </li>
                 <li>
                     <a href="/home">
                         <span class="icon">
@@ -199,7 +206,7 @@
                         Event</button>
                 </div>
                 <div class="ana">
-                    @foreach ($events as $event)
+                    
                         <div class="containe">
                             <div class="wrapper">
                                 <div class="banner-image">
