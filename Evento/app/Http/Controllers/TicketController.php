@@ -19,5 +19,10 @@ class TicketController extends Controller
 dd("wssselt");
         return redirect()->back()->with('success', 'Ticket purchased successfully!');
     }
+    public function showTickets()
+{
+    $tickets = Ticket::all(); 
+    return view('organisateur.Ticket', compact('tickets'));
+}
 
 }

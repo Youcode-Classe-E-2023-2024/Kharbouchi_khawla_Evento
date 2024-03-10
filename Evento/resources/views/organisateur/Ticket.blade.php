@@ -295,77 +295,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               
-                                    <tr>
-                                        <td style="text-align: center;"  onclick="document.getElementById('demo-modal').showModal();">
-                                                <h3>1<h3>
-                                                </td>
-                                        <td style="text-align: center;">jhklm</td>
-                                        <td style="text-align: center;">010205</td>
+                                @foreach ($tickets as $ticket)
+                                    <tr >
+                                        <td style="text-align: center;"
+                                            onclick="document.getElementById('demo-modal').showModal();">
+                                            <h3>{{ $ticket->id }}<h3>
+                                        </td>
+                                        <td style="text-align: center;">{{ $ticket->card_holder }}</td>
+                                        <td style="text-align: center;">{{ $ticket->created_at->format('Y-m-d') }}</td>
                                         <td style="text-align: center;">
                                             {{-- @if (optional($event->validity)->valid) --}}
-                                                <!-- Use optional() to avoid errors if $event->validity is null -->
-                                                <button style="background-color: green; color: white;">Validé</button>
+                                            <!-- Use optional() to avoid errors if $event->validity is null -->
+                                            <button style="background-color: green; color: white;">Validé</button>
                                             {{-- @else --}}
-                                                <button style="background-color: red; color: white;">Non validé</button>
+                                            <button style="background-color: red; color: white;">Non validé</button>
                                             {{-- @endif --}}
 
                                     </tr>
-                               
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- La Modal -->
-            {{-- <dialog id="demo-modal"
+            <dialog id="demo-modal"
                 style="backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);background-color: rgba(17, 25, 40, 0.25);border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.125);padding: 38px;filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); position: fixed; top: 50%; left: 50%;transform: translate(-50%, -50%);">
                 <button onclick="document.getElementById('demo-modal').close();">x</button>
-                <h1 style="text-align: center;">{{ $event->title }}</h1>
                 <div
                     style=" display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 20px;">
-                    <div class="image-container" style="margin-right: 10px">
-                        <img src="{{ asset('storage/images/' . $event->image) }}" alt="">
-                    </div>
                     <div class="inputs-container" style="display: flex;flex-direction: column;gap:5px;">
-                        <h3 style="color: #fff">{{ $event->category_name }}</h3>
-                        <h3 style="color: #fff">{{ $event->price }}</h3>
-                        <h3 style="color: #fff">{{ $event->location }}</h3>
-                        <h3 style="color: #fff">{{ $event->places }}</h3>
+                        <h3 style="color: #fff">{{ $ticket->card_holder }}</h3>
+                        <h3 style="color: #fff">{{ $ticket->created_at->format('Y-m-d') }}</h3>
                     </div>
-                </div>
-                <div style="width: 95%">
-                    <span style="color: #fff">
-                        {{ $event->description }}</span>
                 </div>
                 <div style="display: flex;flex-direction: row; margin: 20px;">
-                    <form method="POST" action="{{ route('event.validate', $event->id) }}">
-                        @csrf
-                        <input type="hidden" name="event_id" value="{{ $event->id }}">
-                        <div style="display: flex; flex-direction: row; margin: 20px;">
-                            <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
-                            <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
-                        </div>
-                    </form>
+
+                    <div style="display: flex; flex-direction: row; margin: 20px;">
+                        <button type="submit" name="valid" value="1" class="btn fill">VALIDE</button>
+                        <button type="submit" name="valid" value="0" class="btn outline">INVALIDE</button>
+                    </div>
                 </div>
-            </dialog> --}}
+            </dialog>
 
-            
-            <script>
-                function openModal(eventId) {
-                    var eventTitle = document.querySelector(`#event-${eventId} .event-title`).innerText;
-                    var eventImage = document.querySelector(`#event-${eventId} .event-image`).src;
-                    // Add more details as needed
-
-                    // Populate the modal
-                    document.querySelector('#demo-modal .modal-title').innerText = eventTitle;
-                    document.querySelector('#demo-modal .modal-image').src = eventImage;
-                    // Populate more details similarly
-
-                    // Open the modal
-                    document.getElementById('demo-modal').showModal();
-                }
-            </script>
 
 
         </div>
