@@ -9,7 +9,6 @@
     <!-- ======= Styles ====== -->
 
     <link rel="stylesheet" href="assets/css/style.css">
-
     <style>
         table {
             width: 100%;
@@ -330,7 +329,7 @@
                 <h1 style="text-align: center;">{{ $event->title }}</h1>
                 <div
                     style=" display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 20px;">
-                    <div class="image-container" style="margin-right: 10px">
+                    <div class="banner-image" style="margin-right: 10px">
                         <img src="{{ asset('storage/images/' . $event->image) }}" alt="">
                     </div>
                     <div class="inputs-container" style="display: flex;flex-direction: column;gap:5px;">
@@ -357,21 +356,7 @@
             </dialog>
 
             
-            <script>
-                function openModal(eventId) {
-                    var eventTitle = document.querySelector(`#event-${eventId} .event-title`).innerText;
-                    var eventImage = document.querySelector(`#event-${eventId} .event-image`).src;
-                    // Add more details as needed
 
-                    // Populate the modal
-                    document.querySelector('#demo-modal .modal-title').innerText = eventTitle;
-                    document.querySelector('#demo-modal .modal-image').src = eventImage;
-                    // Populate more details similarly
-
-                    // Open the modal
-                    document.getElementById('demo-modal').showModal();
-                }
-            </script>
 
 
         </div>

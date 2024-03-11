@@ -269,7 +269,7 @@
 
         @if (session('success'))
         <script>
-            // Wait for 5 seconds (5000 milliseconds), then hide the success alert
+            // Wait for 3 seconds (3000 milliseconds), then hide the success alert
             setTimeout(function() {
                 var successAlert = document.getElementById('success-alert');
                 if (successAlert.style.opacity !== "0") {
