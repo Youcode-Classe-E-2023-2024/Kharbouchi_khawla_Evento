@@ -11,19 +11,26 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
     
-        // Récupération des événements valides uniquement
-        $events = Event::whereHas('validity', function($query) {
+     
+        $eventsQuery = Event::whereHas('validity', function($query) {
             $query->where('valid', true);
-        })->get();
-        $events = Event::paginate(3); // Récupère 10 événements par page
+        });
+    
+        if ($request->has('category_id') && $request->category_id != '') {
+            $eventsQuery = $eventsQuery->where('category_id', $request->category_id);
+        }
+        if ($request->has('search') && $request->search != '') {
+            $eventsQuery->where('title', 'like', '%' . $request->search . '%');
+        }
+        $events = $eventsQuery->paginate(4);
        
-        // Passage des événements valides et des catégories à la vue
         return view('home', ['categories' => $categories, 'events' => $events]);
     }
+    
     
 
     /**

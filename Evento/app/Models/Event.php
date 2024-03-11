@@ -15,6 +15,10 @@ class Event extends Model
 {
     return $this->hasOne(Validity::class, 'event_id');
 }
+public function category()
+{
+    return $this->belongsTo(Category::class);
+}
 
 
 }
