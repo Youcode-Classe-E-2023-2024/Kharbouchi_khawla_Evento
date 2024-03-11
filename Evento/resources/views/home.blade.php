@@ -85,8 +85,9 @@
 <div>
     <form action="{{ route('home') }}" method="GET" class="mb-4">
         <div style="display: flex; justify-content: center; align-items: center; gap: 8px;">
-            <!-- Champ de recherche par titre -->
             <input type="text" name="search" placeholder="Search for events" value="{{ request('search') }}" style="padding: 8px; margin-right: 8px;">
+            <!-- Champ de recherche par titre -->
+
     
             <!-- Sélection de catégorie -->
             <select name="category_id" onchange="this.form.submit()" style="padding: 8px;">
