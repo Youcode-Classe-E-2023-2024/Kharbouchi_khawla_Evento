@@ -81,16 +81,27 @@
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://t3.ftcdn.net/jpg/04/38/18/48/360_F_438184846_1BzROkQWk4Ffwf5wHgtemCLhdmoSugYl.jpg) no-repeat center;background-size:cover"
         class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto flex justify-center items-center"
         style="height: 100vh;">
-
+        
 <div>
     <form action="{{ route('home') }}" method="GET" class="mb-4">
-            <h1 class="pb-4">Search for Events</h1>
-            <div class="search" style="display: flex; justify-content: center; align-items: center;">
-                <label>
-                    <input type="text" placeholder="Search here" style="margin-right: 8px;">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+            <!-- Champ de recherche par titre -->
+            <input type="text" name="search" placeholder="Search for events" value="{{ request('search') }}" style="padding: 8px; margin-right: 8px;">
+    
+            <!-- Sélection de catégorie -->
+            <select name="category_id" onchange="this.form.submit()" style="padding: 8px;">
+                <option value="">All Categories</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+                @endforeach
+            </select>
+    
+            <!-- Bouton de recherche -->
+            <button type="submit" style="padding: 8px;">Search</button>
+        </div>
+    </form>
         </div>
     </div>
 
