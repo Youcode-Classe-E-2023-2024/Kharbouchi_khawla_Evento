@@ -253,7 +253,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -314,7 +317,6 @@
                                             @else
                                                 <button style="background-color: red; color: white;">Non validé</button>
                                             @endif
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -355,7 +357,7 @@
                 </div>
             </dialog>
 
-            
+
 
 
 
