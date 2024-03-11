@@ -146,14 +146,19 @@
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </div>
+            @if (session('success'))
+            <div id="success-alert"
+                style="position: fixed; top: 20px; right: 20px; background-color: #28a745; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+                {{ session('success') }}
+            </div>
+        @endif
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        @foreach ($clients as $client)
-                            <div class="numbers">{{ $client->id }}</div>
-                        @endforeach
+                            <div class="numbers">45</div>
+                       
                         <div class="cardName">Clients</div>
                     </div>
 
@@ -239,7 +244,6 @@
                                                             style="background: #2a2185; color: #ffff;">Save</button>
                                                 </div>
                                             </form>
-                                            
                                         </div>
                                     </td>
                                     <td class="p-3 px-5 flex justify-end">
@@ -261,6 +265,23 @@
             </div>
 
         </div>
+
+
+        @if (session('success'))
+        <script>
+            // Wait for 5 seconds (5000 milliseconds), then hide the success alert
+            setTimeout(function() {
+                var successAlert = document.getElementById('success-alert');
+                if (successAlert.style.opacity !== "0") {
+                    successAlert.style.transition = "opacity 0.3s linear";
+                    successAlert.style.opacity = "0";
+                    setTimeout(function() {
+                        successAlert.remove();
+                    }, 300); // Wait for the opacity transition, then remove the element
+                }
+            }, 3000);
+        </script>
+    @endif
         <!-- =========== Scripts =========  -->
         <script src="assets/js/main.js"></script>
 
